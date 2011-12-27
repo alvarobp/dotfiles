@@ -1,0 +1,5 @@
+#key : rdeb
+#name : require 'ruby-debug'; debugger
+#group : debugging
+# --
+require 'ruby-debug'; debugger

@@ -1,0 +1,13 @@
+2011-12-12  Stas Boukarev  <stassats@gmail.com>
+
+	* slime.el (slime-compile-region): Run slime-flash-region
+	directly, not from `slime-before-compile-functions', which is run
+	also for C-c C-k.
+
+	* Everything: imported slime-0.2 sources.
+
+;; Local Variables:
+;; coding: latin-1
+;; End:
+
+This file has been placed in the public domain.

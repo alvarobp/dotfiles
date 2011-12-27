@@ -1,0 +1,28 @@
+[merge]
+  tool = opendiff
+
+[color]
+  ui = auto
+
+[user]
+  name = Alvaro Bautista
+  email = alvarobp@gmail.com
+
+[alias]
+  review = !"git log master..origin/master"
+  am = am -3
+  st = status
+  co = checkout
+  di = diff
+  sh = show
+  ci = commit
+  br = branch
+  ll = log --decorate -p
+  fp = format-patch
+  cp = cherry-pick
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
+  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+  # up = !git stash && git pull --rebase && git push origin `git name-rev --name-only HEAD` && git stash pop
+
+[branch]
+  autosetuprebase = always
