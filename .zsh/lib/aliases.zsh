@@ -1,7 +1,7 @@
 [[ -s $HOME/.aliases ]] && source $HOME/.aliases
 
 alias rssh='rsync -avvurP -e ssh --delete '
-alias wget='wget --no-check-certificate '
+alias wgetn='wget --no-check-certificate '
 alias be='bundle exec '
 alias ber='bundle exec rspec'
 
