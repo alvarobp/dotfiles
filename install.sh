@@ -54,5 +54,8 @@ check_and_link_file ".gemrc"
 # IRB
 check_and_link_file ".irbrc"
 
+# TMUX
+check_and_link_file ".tmux.conf"
+
 /usr/bin/env zsh
 source ~/.zshrc
