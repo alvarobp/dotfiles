@@ -8,14 +8,16 @@
 ;; (global-set-key [(meta ?\º)] "\\")
 ;; (global-set-key [(meta ?\ñ)] "~")
 
-;; Indent region on OSX
-(global-set-key (kbd "C-M-º") 'indent-region)
+;; Apple Keyboard mappings
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-key-is-meta t)
+  (setq mac-right-option-key-is-meta nil)
+  (setq mac-command-key-is-meta nil)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+)
 
 ;; Goto line
 (global-set-key (kbd "C-c g") 'goto-line)
-
-;; Map kp-delete (Apple Keyboard) to delete-char
-(global-set-key '[(kp-delete)] 'delete-char)
 
 ;; Toggle fullscreen
 (global-set-key (kbd "M-RET") 'ns-toggle-fullscreen)
