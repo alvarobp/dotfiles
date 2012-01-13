@@ -1,4 +1,7 @@
-(load "defunkt/global")
+(setq tags-file-name ".TAGS")
+
+(setq-default tab-width 2)
+(setq-default indent-tabs-mode nil)
 
 ;; UTF8 as default encoding
 (setq locale-coding-system 'utf-8)
@@ -39,11 +42,16 @@
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
+;; Disable toolbar
+(when (functionp 'tool-bar-mode)
+  (tool-bar-mode -1))
+
 ;; Don't show the startup screen
 (setq inhibit-startup-message t)
 
 ;; Highlight matching parens
 (show-paren-mode t)
 
-;; Avoid frame popup on OSX
+;; OSX Specifics
 (setq ns-pop-up-frames nil)
+(setq mac-emulate-three-button-mouse nil)
