@@ -1,12 +1,12 @@
 ;; Spanish keyboard mappings
-(global-set-key [(meta +)] "]")
-(global-set-key [(meta ?\ç)] "}")
-(global-set-key [(meta \1)] "|")
-(global-set-key [(meta \2)] "@")
-(global-set-key [(meta \3)] "#")
-(global-set-key [(meta \4)] "~")
-(global-set-key [(meta ?\º)] "\\")
-(global-set-key [(meta ?\ñ)] "~")
+;; (global-set-key [(meta +)] "]")
+;; (global-set-key [(meta ?\ç)] "}")
+;; (global-set-key [(meta \1)] "|")
+;; (global-set-key [(meta \2)] "@")
+;; (global-set-key [(meta \3)] "#")
+;; (global-set-key [(meta \4)] "~")
+;; (global-set-key [(meta ?\º)] "\\")
+;; (global-set-key [(meta ?\ñ)] "~")
 
 ;; Indent region on OSX
 (global-set-key (kbd "C-M-º") 'indent-region)
