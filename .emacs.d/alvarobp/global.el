@@ -42,6 +42,9 @@
 ;; Disable splash screen
 (setq inhibit-splash-screen t)
 
+;; Disable menu-bar
+(menu-bar-mode 0)
+
 ;; Disable toolbar
 (when (functionp 'tool-bar-mode)
   (tool-bar-mode -1))
