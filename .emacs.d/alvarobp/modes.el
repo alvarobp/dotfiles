@@ -15,6 +15,9 @@
 ;; Show column number
 (setq column-number-mode t)
 
+;; Highlighting
+(transient-mark-mode t)
+
 ;; find-recursive
 (vendor 'find-recursive)
 
