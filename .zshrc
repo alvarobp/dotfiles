@@ -33,7 +33,7 @@ for config_file (~/.zsh/lib/*.zsh) source $config_file
 CUSTOM_ZSH_THEME="alvarobp"
 [[ -s $HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme ]] && source "$HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme"
 
-export PATH=/usr/local/bin:/usr/local/sbin:/$HOME/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 
 export TERM=xterm-256color
 
