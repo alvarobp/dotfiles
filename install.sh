@@ -57,5 +57,12 @@ check_and_link_file ".irbrc"
 # TMUX
 check_and_link_file ".tmux.conf"
 
+# Binaries
+mkdir -p $HOME/bin
+binaryfiles=`ls $dotfiles_path/bin/`
+for binfile in $binaryfiles; do
+  check_and_link_file "bin/$binfile"
+done
+
 /usr/bin/env zsh
 source ~/.zshrc
