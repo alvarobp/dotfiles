@@ -58,6 +58,10 @@ check_and_link_file ".irbrc"
 # TMUX
 check_and_link_file ".tmux.conf"
 
+# VIM
+check_and_link_file ".vimrc"
+check_and_link_directory ".vim"
+
 # Binaries
 mkdir -p $HOME/bin
 binaryfiles=`ls $dotfiles_path/bin/`
