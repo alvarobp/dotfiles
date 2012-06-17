@@ -2,12 +2,11 @@
 
 ;; Copyright (C) 1999-2008 Yukihiro Matsumoto, Nobuyoshi Nakada
 
-;; Authors: Yukihiro Matsumoto, Nobuyoshi Nakada
-;; URL: http://www.emacswiki.org/cgi-bin/wiki/RubyMode
+;; Author: Yukihiro Matsumoto, Nobuyoshi Nakada
+;; URL: http://github.com/nonsequitur/inf-ruby
 ;; Created: 8 April 1998
 ;; Keywords: languages ruby
-;; Version: 2.1
-;; Package-Requires: ((ruby-mode "1.1"))
+;; Version: 2.2.2
 
 ;;; Commentary:
 ;;
@@ -50,7 +49,7 @@
   (let ((map (copy-keymap comint-mode-map)))
     (define-key map (kbd "C-c C-l") 'inf-ruby-load-file)
     (define-key map (kbd "C-x C-e") 'ruby-send-last-sexp)
-    (define-key map (kbd "TAB") 'inf-ruby-complete-or-tab)
+    (define-key map (kbd "TAB") 'inf-ruby-complete)
     map)
   "*Mode map for inf-ruby-mode")
 
@@ -73,6 +72,8 @@ Used by these commands to determine defaults.")
 Caches the last pair used in the last ruby-load-file command.
 Used for determining the default in the
 next one.")
+
+(defvar inf-ruby-at-top-level-prompt-p t)
 
 (defconst inf-ruby-error-regexp-alist
   '(("SyntaxError: compile error\n^\\([^\(].*\\):\\([1-9][0-9]*\\):" 1 2)
@@ -136,6 +137,7 @@ to continue it."
   (setq mode-line-process '(":%s"))
   (use-local-map inf-ruby-mode-map)
   (setq comint-input-filter (function inf-ruby-input-filter))
+  (add-to-list 'comint-output-filter-functions 'inf-ruby-output-filter)
   (setq comint-get-old-input (function inf-ruby-get-old-input))
   (make-local-variable 'compilation-error-regexp-alist)
   (setq compilation-error-regexp-alist inf-ruby-error-regexp-alist)
@@ -149,6 +151,12 @@ Defaults to a regexp ignoring all inputs of 0, 1, or 2 letters.")
 (defun inf-ruby-input-filter (str)
   "Don't save anything matching inf-ruby-filter-regexp"
   (not (string-match inf-ruby-filter-regexp str)))
+
+(defun inf-ruby-output-filter (output)
+  "Check if the current prompt is a top-level prompt"
+  (setq inf-ruby-at-top-level-prompt-p
+        (string-match inf-ruby-prompt-pattern
+                      (car (last (split-string output "\n"))))))
 
 ;; adapted from replace-in-string in XEmacs (subr.el)
 (defun inf-ruby-remove-in-string (str regexp)
@@ -219,12 +227,14 @@ of `ruby-program-name').  Runs the hooks `inferior-ruby-mode-hook'
   "Template for irb here document terminator.
 Must not contain ruby meta characters.")
 
+(defconst inf-ruby-eval-binding "IRB.conf[:MAIN_CONTEXT].workspace.binding")
+
 (defconst ruby-eval-separator "")
 
 (defun ruby-send-region (start end)
   "Send the current region to the inferior Ruby process."
   (interactive "r")
-  (let (term (file (buffer-file-name)) line)
+  (let (term (file (or buffer-file-name (buffer-name))) line)
     (save-excursion
       (save-restriction
         (widen)
@@ -241,7 +251,9 @@ Must not contain ruby meta characters.")
         (goto-char m)
         (insert ruby-eval-separator "\n")
         (set-marker m (point))))
-    (comint-send-string (inf-ruby-proc) (format "eval <<'%s', nil, %S, %d\n" term file line))
+    (comint-send-string (inf-ruby-proc) (format "eval <<'%s', %s, %S, %d\n"
+                                                term inf-ruby-eval-binding
+                                                file line))
     (comint-send-region (inf-ruby-proc) start end)
     (comint-send-string (inf-ruby-proc) (concat "\n" term "\n"))))
 
@@ -312,35 +324,52 @@ Then switch to the process buffer."
                                               file-name
                                               "\"\)\n")))
 
+(defun ruby-escape-single-quoted (str)
+  (replace-regexp-in-string "'" "\\\\'"
+    (replace-regexp-in-string "\n" "\\\\n" 
+      (replace-regexp-in-string "\\\\" "\\\\\\\\" str))))
+
 (defun inf-ruby-completions (seed)
   "Return a list of completions for the line of ruby code starting with SEED."
   (let* ((proc (get-buffer-process inf-ruby-buffer))
 	 (comint-filt (process-filter proc))
 	 (kept "") completions)
-    (set-process-filter proc (lambda (proc string) (setf kept (concat kept string))))
-    (process-send-string proc (format "puts IRB::InputCompletor::CompletionProc.call('%s').compact\n" seed))
-    (while (not (string-match inf-ruby-prompt-pattern kept)) (accept-process-output proc))
-    (if (string-match "^[[:alpha:]]+?Error: " kept) (error kept))
-    (setf completions (butlast (split-string kept "[\r\n]") 2))
+    (set-process-filter proc (lambda (proc string) (setq kept (concat kept string))))
+    (process-send-string proc (format "puts IRB::InputCompletor::CompletionProc.call('%s').compact\n"
+                                      (ruby-escape-single-quoted seed)))
+    (while (and (not (string-match inf-ruby-prompt-pattern kept))
+                (accept-process-output proc 2)))
+    (setq completions (cdr (butlast (split-string kept "\r?\n") 2)))
     (set-process-filter proc comint-filt)
     completions))
 
+(defun inf-ruby-completion-at-point ()
+  (if inf-ruby-at-top-level-prompt-p
+      (let* ((curr (replace-regexp-in-string "\n$" "" (thing-at-point 'line)))
+             (completions (inf-ruby-completions curr)))
+        (if completions
+            (if (= (length completions) 1)
+                (car completions)
+              (completing-read "possible completions: "
+                               completions nil t curr))))
+    (message "Completion aborted: Not at a top-level prompt")
+    nil))
+
+(defun inf-ruby-complete (command)
+  "Complete the ruby code at point. Relies on the irb/completion
+Module used by readline when running irb through a terminal"
+  (interactive (list (inf-ruby-completion-at-point)))
+  (when command
+   (kill-whole-line 0)
+   (insert command)))
+
 (defun inf-ruby-complete-or-tab (&optional command)
   "Either complete the ruby code at point or call
-`indent-for-tab-command' if no completion is available.  Relies
-on the irb/completion Module used by readline when running irb
-through a terminal."
-  (interactive (list (let* ((curr (thing-at-point 'line))
-			    (completions (inf-ruby-completions curr)))
-		       (case (length completions)
-			 (0 nil)
-			 (1 (car completions))
-			 (t (completing-read "possible completions: " completions nil 'confirm-only curr))))))
+`indent-for-tab-command' if no completion is available."
+  (interactive (list (inf-ruby-completion-at-point)))
   (if (not command)
       (call-interactively 'indent-for-tab-command)
-    (move-beginning-of-line 1)
-    (kill-line 1)
-    (insert command)))
+    (inf-ruby-complete command)))
 
 ;;;###autoload
 (eval-after-load 'ruby-mode
