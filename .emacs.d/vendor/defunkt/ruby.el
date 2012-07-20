@@ -23,7 +23,7 @@
 
 (add-hook 'ruby-mode-hook
           (lambda ()
-            (add-hook 'local-write-file-hooks
+            (add-hook 'before-save-hook
                       '(lambda()
                          (save-excursion
                            (untabify (point-min) (point-max)))))
