@@ -25,6 +25,7 @@
   noff = merge --no-ff
   aa = add --all
   fa = fetch --all
+  fapu = "!git fa && git pull"
   l = "!source ~/.githelpers && pretty_git_log"
   la = !git l --all
   r = !git l -20
