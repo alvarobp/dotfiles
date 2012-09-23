@@ -77,3 +77,7 @@
  '(diff-added ((t (:foreground "Green"))) 'now)
  '(diff-removed ((t (:foreground "Red"))) 'now)
 )
+
+;; scala
+(add-to-list 'load-path "~/.emacs.d/vendor/scala-mode")
+(load "scala-mode-auto")
