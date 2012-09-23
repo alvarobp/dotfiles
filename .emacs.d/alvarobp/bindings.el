@@ -8,6 +8,9 @@
 ;; (global-set-key [(meta ?\º)] "\\")
 ;; (global-set-key [(meta ?\ñ)] "~")
 
+;; Align regexp
+(global-set-key (kbd "C-x \\") 'align-regexp)
+
 ;; Apple Keyboard mappings
 (when (eq system-type 'darwin) ;; mac specific settings
   (setq mac-option-key-is-meta t)
