@@ -10,7 +10,7 @@
 (load "alvarobp/modes/recentf")
 
 ;; all modes
-;; (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Show column number
 (setq column-number-mode t)
