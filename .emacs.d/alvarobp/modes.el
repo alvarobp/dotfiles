@@ -22,7 +22,7 @@
 (vendor 'find-recursive)
 
 ;; show line numbers
-(autoload 'linum-mode "linum" "toggle line numbers on/off" t) 
+(autoload 'linum-mode "linum" "toggle line numbers on/off" t)
 (global-set-key (kbd "C-<f5>") 'linum-mode)
 
 ;; emacs
@@ -81,3 +81,6 @@
 ;; scala
 (add-to-list 'load-path "~/.emacs.d/vendor/scala-mode")
 (load "scala-mode-auto")
+
+;; rspec
+(vendor 'rspec-mode)
