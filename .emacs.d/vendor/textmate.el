@@ -71,7 +71,7 @@
   "Regexp of files to exclude from `textmate-goto-file'.")
 
 (defvar *textmate-project-roots*
-  '(".git" ".hg" "Rakefile" "Makefile" "README" "build.xml" ".emacs-project")
+  (list default-directory ".git" ".hg" "Rakefile" "Makefile" "README" "build.xml" ".emacs-project")
   "The presence of any file/directory in this list indicates a project root.")
 
 (defvar textmate-use-file-cache t
@@ -295,12 +295,12 @@ Symbols matching the text at point are put first in the completion list."
   "Uses your completing read to quickly jump to a file in a project."
   (interactive)
   (let ((root (textmate-project-root)))
-    (when (null root) 
+    (when (null root)
       (error "Can't find any .git directory"))
-    (find-file 
-     (concat 
+    (find-file
+     (concat
       (expand-file-name root) "/"
-      (textmate-completing-read 
+      (textmate-completing-read
        "Find file: "
        (mapcar
 	(lambda (e)

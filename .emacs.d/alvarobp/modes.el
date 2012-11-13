@@ -8,6 +8,7 @@
 (load "alvarobp/modes/lisp")
 (load "alvarobp/modes/sh")
 (load "alvarobp/modes/recentf")
+(load "alvarobp/modes/textmate")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -40,11 +41,6 @@
   '(progn
      (set-face-foreground 'magit-diff-add "green3")
      (set-face-foreground 'magit-diff-del "red3")))
-
-;; textmate.el
-(vendor 'textmate)
-(textmate-mode)
-(setq textmate-find-files-command "git ls-tree --full-tree --name-only -r HEAD")
 
 ;; haml
 (vendor 'haml-mode)
