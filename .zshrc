@@ -39,7 +39,7 @@ export TERM=xterm-256color
 
 ## Editors
 export EDITOR=emacs
-export BUNDLER_EDITOR=mate
+export BUNDLER_EDITOR=emacs
 
 # RVM
 [[ -d $HOME/.rvm/bin ]] && export PATH=$HOME/.rvm/bin:$PATH
