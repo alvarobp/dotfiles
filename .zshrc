@@ -41,9 +41,5 @@ export TERM=xterm-256color
 export EDITOR=emacs
 export BUNDLER_EDITOR=emacs
 
-# RVM
-[[ -d $HOME/.rvm/bin ]] && export PATH=$HOME/.rvm/bin:$PATH
-[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm
-
 # Custom extensions (outside dotfiles)
 [[ -s $HOME/.zsh-custom ]] && source $HOME/.zsh-custom
