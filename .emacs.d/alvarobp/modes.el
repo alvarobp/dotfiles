@@ -80,3 +80,8 @@
 
 ;; rspec
 (vendor 'rspec-mode)
+
+;; autopair
+(vendor 'autopair)
+(setq autopair-autowrap t)
+(autopair-global-mode t)

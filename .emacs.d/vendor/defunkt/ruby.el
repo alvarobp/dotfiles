@@ -29,9 +29,7 @@
                            (untabify (point-min) (point-max)))))
             (set (make-local-variable 'indent-tabs-mode) 'nil)
             (set (make-local-variable 'tab-width) 2)
-            (define-key ruby-mode-map "\C-m" 'ruby-reindent-then-newline-and-indent)
-            (require 'ruby-electric)
-            (ruby-electric-mode t)))
+            (define-key ruby-mode-map "\C-m" 'ruby-reindent-then-newline-and-indent)))
 
 (defadvice ruby-do-run-w/compilation (before kill-buffer (name cmdlist))
   (let ((comp-buffer-name (format "*%s*" name)))
