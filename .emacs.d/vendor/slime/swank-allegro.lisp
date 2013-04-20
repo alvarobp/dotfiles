@@ -29,13 +29,17 @@
 
 ;;;; UTF8
 
+(define-symbol-macro utf8-ef 
+    (load-time-value 
+     (excl:crlf-base-ef (excl:find-external-format :utf-8))
+     t))
+
 (defimplementation string-to-utf8 (s)
-  (let ((ef (load-time-value (excl:find-external-format :utf-8) t)))
-    (excl:string-to-octets s :external-format ef)))
+  (excl:string-to-octets s :external-format utf8-ef 
+                         :null-terminate nil))
 
 (defimplementation utf8-to-string (u)
-  (let ((ef (load-time-value (excl:find-external-format :utf-8) t)))
-    (excl:octets-to-string u :external-format ef)))
+  (excl:octets-to-string u :external-format utf8-ef))
 
 
 ;;;; TCP Server
@@ -81,12 +85,6 @@
             (excl:find-external-format (car e) 
                                        :try-variant t)))))
 
-(defimplementation format-sldb-condition (c)
-  (princ-to-string c))
-
-(defimplementation call-with-syntax-hooks (fn)
-  (funcall fn))
-
 ;;;; Unix signals
 
 (defimplementation getpid ()
@@ -110,6 +108,9 @@
     (simple-error () :not-available)))
 
 (defimplementation macroexpand-all (form)
+  #+(version>= 8 0)
+  (excl::walk-form form)
+  #-(version>= 8 0)
   (excl::walk form))
 
 (defimplementation describe-symbol-for-emacs (symbol)
@@ -210,24 +211,25 @@
   (let* ((frame (nth-frame index)))
     (multiple-value-bind (x fun xx xxx pc) (debugger::dyn-fd-analyze frame)
       (declare (ignore x xx xxx))
-      (cond (pc
-             #+(version>= 8 2)
-             (pc-source-location fun pc)
-             #-(version>= 8 2)
-             (function-source-location fun))
+      (cond ((and pc
+                  #+(version>= 8 2)
+                  (pc-source-location fun pc)
+                  #-(version>= 8 2)
+                  (function-source-location fun)))
             (t ; frames for unbound functions etc end up here
              (cadr (car (fspec-definition-locations
                          (car (debugger:frame-expression frame))))))))))
 
 (defun function-source-location (fun)
-  (cadr (car (fspec-definition-locations (xref::object-to-function-name fun)))))
+  (cadr (car (fspec-definition-locations 
+              (xref::object-to-function-name fun)))))
 
 #+(version>= 8 2)
 (defun pc-source-location (fun pc)
   (let* ((debug-info (excl::function-source-debug-info fun)))
     (cond ((not debug-info)
            (function-source-location fun))
-          (t 
+          (t
            (let* ((code-loc (find-if (lambda (c)
                                        (<= (- pc (sys::natural-width))
                                            (excl::ldb-code-pc c)
@@ -240,28 +242,35 @@
 
 #+(version>= 8 2)
 (defun ldb-code-to-src-loc (code)
-  (let* ((start (excl::ldb-code-start-char code))
-         (func (excl::ldb-code-func code))
+  (declare (optimize debug))
+  (let* ((func (excl::ldb-code-func code))
+         (debug-info (excl::function-source-debug-info func))
+         (start (loop for i downfrom (excl::ldb-code-index code) 
+                      for bpt = (aref debug-info i)
+                      for start = (excl::ldb-code-start-char bpt)
+                      when start return start))
          (src-file (excl:source-file func)))
-    (cond (start 
+    (cond (start
            (buffer-or-file-location src-file start))
-          (t
+          (func
            (let* ((debug-info (excl::function-source-debug-info func))
                   (whole (aref debug-info 0))
                   (paths (source-paths-of (excl::ldb-code-source whole)
                                           (excl::ldb-code-source code)))
-                  (path (longest-common-prefix paths))
-                  (start (excl::ldb-code-start-char whole)))
-             (buffer-or-file 
-              src-file 
-              (lambda (file) 
-                (make-location `(:file ,file) 
+                  (path (if paths (longest-common-prefix paths) '()))
+                  (start 0))
+             (buffer-or-file
+              src-file
+              (lambda (file)
+                (make-location `(:file ,file)
                                `(:source-path (0 . ,path) ,start)))
               (lambda (buffer bstart)
                 (make-location `(:buffer ,buffer)
                                `(:source-path (0 . ,path)
-                                              ,(+ bstart start))))))))))
- 
+                                              ,(+ bstart start)))))))
+          (t
+           nil))))
+
 (defun longest-common-prefix (sequences)
   (assert sequences)
   (flet ((common-prefix (s1 s2)
@@ -290,6 +299,14 @@
       (debugger:eval-form-in-context 
        `(let* ,vars ,form)
        (debugger:environment-of-frame frame)))))
+
+(defimplementation frame-package (frame-number)
+  (let* ((frame (nth-frame frame-number))
+         (exp (debugger:frame-expression frame)))
+    (typecase exp
+      ((cons symbol) (symbol-package (car exp)))
+      ((cons (cons (eql :internal) (cons symbol)))
+       (symbol-package (cadar exp))))))
 
 (defimplementation return-from-frame (frame-number form)
   (let ((frame (nth-frame frame-number)))
@@ -336,7 +353,7 @@
   `(satisfies redefinition-p))
 
 (defun signal-compiler-condition (&rest args)
-  (signal (apply #'make-condition 'compiler-condition args)))
+  (apply #'signal 'compiler-condition args))
 
 (defun handle-compiler-warning (condition)
   (declare (optimize (debug 3) (speed 0) (space 0)))
@@ -530,7 +547,8 @@
                  (t
                   (find-definition-in-file fspec type file top-level)))))
         ((member :top-level)
-         (make-error-location "Defined at toplevel: ~A" (fspec->string fspec))))
+         (make-error-location "Defined at toplevel: ~A" 
+                              (fspec->string fspec))))
     (error (e)
       (make-error-location "Error: ~A" e))))
 
@@ -643,7 +661,8 @@
 ;;;; Profiling
 
 ;; Per-function profiling based on description in
-;;  http://www.franz.com/support/documentation/8.0/doc/runtime-analyzer.htm#data-collection-control-2
+;;  http://www.franz.com/support/documentation/8.0/\
+;;  doc/runtime-analyzer.htm#data-collection-control-2
 
 (defvar *profiled-functions* ())
 (defvar *profile-depth* 0)
@@ -830,6 +849,25 @@
      (when (eq timeout t) (return (values nil t)))
      (mp:process-wait-with-timeout "receive-if" 0.5
                                    #'mp:gate-open-p (mailbox.gate mbox)))))
+
+(let ((alist '())
+      (lock (mp:make-process-lock :name "register-thread")))
+
+  (defimplementation register-thread (name thread)
+    (declare (type symbol name))
+    (mp:with-process-lock (lock)
+      (etypecase thread
+        (null 
+         (setf alist (delete name alist :key #'car)))
+        (mp:process
+         (let ((probe (assoc name alist)))
+           (cond (probe (setf (cdr probe) thread))
+                 (t (setf alist (acons name thread alist))))))))
+    nil)
+
+  (defimplementation find-registered (name)
+    (mp:with-process-lock (lock)
+      (cdr (assoc name alist)))))
 
 (defimplementation set-default-initial-binding (var form)
   (push (cons var form)

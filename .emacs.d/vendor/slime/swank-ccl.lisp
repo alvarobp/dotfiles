@@ -23,7 +23,9 @@
 (import-from :ccl *gray-stream-symbols* :swank-backend)
 
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (require 'xref))
+  (multiple-value-bind (ok err) (ignore-errors (require 'xref))
+    (unless ok
+      (warn "~a~%" err))))
 
 ;;; swank-mop
 
@@ -156,16 +158,15 @@
 
 (defun handle-compiler-warning (condition)
   "Resignal a ccl:compiler-warning as swank-backend:compiler-warning."
-  (signal (make-condition
-           'compiler-condition
-           :original-condition condition
-           :message (compiler-warning-short-message condition)
-           :source-context nil
-           :severity (compiler-warning-severity condition)
-           :location (source-note-to-source-location 
-                      (ccl:compiler-warning-source-note condition)
-                      (lambda () "Unknown source")
-                      (ccl:compiler-warning-function-name condition)))))
+  (signal 'compiler-condition
+          :original-condition condition
+          :message (compiler-warning-short-message condition)
+          :source-context nil
+          :severity (compiler-warning-severity condition)
+          :location (source-note-to-source-location 
+                     (ccl:compiler-warning-source-note condition)
+                     (lambda () "Unknown source")
+                     (ccl:compiler-warning-function-name condition))))
 
 (defgeneric compiler-warning-severity (condition))
 (defmethod compiler-warning-severity ((c ccl:compiler-warning)) :warning)
@@ -205,7 +206,7 @@
       (unwind-protect
            (progn
              (with-open-file (s temp-file-name :direction :output 
-                                :if-exists :error)
+                                :if-exists :error :external-format :utf-8)
                (write-string string s))
              (let ((binary-filename (compile-temp-file
                                      temp-file-name filename buffer position)))
@@ -224,7 +225,8 @@
                       (setf (gethash temp-file-name *temp-file-map*)
                             buffer-name)
                       temp-file-name))
-                :compile-file-original-buffer-offset (1- offset)))
+                :compile-file-original-buffer-offset (1- offset)
+                :external-format :utf-8))
 
 (defimplementation save-image (filename &optional restart-function)
   (ccl:save-application filename :toplevel-function restart-function))
@@ -235,8 +237,8 @@
   (delete-duplicates
    (mapcan #'find-definitions
            (if inverse 
-             (ccl:get-relation relation name :wild :exhaustive t)
-             (ccl:get-relation relation :wild name :exhaustive t)))
+             (ccl::get-relation relation name :wild :exhaustive t)
+             (ccl::get-relation relation :wild name :exhaustive t)))
    :test 'equal))
 
 (defimplementation who-binds (name)
@@ -760,6 +762,25 @@
      (when (eq timeout t) (return (values nil t)))
      (ccl:timed-wait-on-semaphore (mailbox.semaphore mbox) 1))))
 
+(let ((alist '())
+      (lock (ccl:make-lock "register-thread")))
+
+  (defimplementation register-thread (name thread)
+    (declare (type symbol name))
+    (ccl:with-lock-grabbed (lock)
+      (etypecase thread
+        (null 
+         (setf alist (delete name alist :key #'car)))
+        (ccl:process
+         (let ((probe (assoc name alist)))
+           (cond (probe (setf (cdr probe) thread))
+                 (t (setf alist (acons name thread alist))))))))
+    nil)
+
+  (defimplementation find-registered (name)
+    (ccl:with-lock-grabbed (lock)
+      (cdr (assoc name alist)))))
+
 (defimplementation set-default-initial-binding (var form)
   (eval `(ccl::def-standard-initial-binding ,var ,form)))
 
@@ -776,3 +797,5 @@
 
 (defimplementation hash-table-weakness (hashtable)
   (ccl:hash-table-weak-p hashtable))
+
+(pushnew 'deinit-log-output ccl:*save-exit-functions*)
