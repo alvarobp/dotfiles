@@ -1,9 +1,8 @@
 require 'irb/completion'
 require 'irb/ext/save-history'
 
-ARGV.concat [ "--readline",
-              "--prompt-mode",
-              "simple" ]
+IRB.conf[:PROMPT_MODE] = :DEFAULT
+IRB.conf[:USE_READLINE] = true
 
 # 200 entries in the list
 IRB.conf[:SAVE_HISTORY] = 200

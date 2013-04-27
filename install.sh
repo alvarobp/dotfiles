@@ -3,7 +3,7 @@ current_date=`date "+%Y%m%d%H%M%S"`
 
 function check_and_link_directory() {
   local path=$1
-  
+
   if [ -d ~/$path ] || [ -h ~/$path ]
   then
     echo "\033[0;33mFound ~/$path\033[0m \033[0;32 Backing up to ~/$path.pre-$current_date\033[0m";
@@ -30,7 +30,7 @@ function check_and_install_oh_my_zsh() {
   then
     echo "\033[0;34mCloning Oh My Zsh...\033[0m"
     /usr/bin/env git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-    
+
     echo "\033[0;34mSetting default shell to zsh\033[0m"
     chsh -s `which zsh`
   fi
@@ -44,6 +44,9 @@ check_and_link_directory ".zsh"
 # EMACS
 check_and_link_file ".emacs"
 check_and_link_directory ".emacs.d"
+
+# EDITRC
+check_and_link_file ".editrc"
 
 # GIT
 check_and_link_file ".gitconfig"

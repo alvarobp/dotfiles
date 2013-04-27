@@ -28,7 +28,7 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-for config_file (~/.zsh/lib/*.zsh) source $config_file
+for config_file ($HOME/.zsh/lib/*.zsh) source $config_file
 
 CUSTOM_ZSH_THEME="alvarobp"
 [[ -s $HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme ]] && source "$HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme"
@@ -39,7 +39,7 @@ export TERM=xterm-256color
 
 ## Editors
 export EDITOR=emacs
-export BUNDLER_EDITOR=emacs
+export BUNDLER_EDITOR=$EDITOR
 
 # Custom extensions (outside dotfiles)
 [[ -s $HOME/.zsh-custom ]] && source $HOME/.zsh-custom
