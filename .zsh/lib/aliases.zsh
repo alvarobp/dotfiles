@@ -20,6 +20,11 @@ alias rdmtp='rake db:migrate db:test:prepare'
 alias rdrm='rake db:drop db:create db:migrate db:test:prepare'
 alias rdtp='rake db:migrate'
 alias rssh='rsync -avvurP -e ssh --delete '
+alias vh='vagrant halt'
+alias vu='vagrant up'
+alias vp='vagrant provision'
+alias vs='vagrant ssh'
+alias vst='vagrant status'
 alias wgetn='wget --no-check-certificate '
 
 # OSX specific
