@@ -28,7 +28,8 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-for config_file ($HOME/.zsh/lib/*.zsh) source $config_file
+source $HOME/.zsh/lib/functions.zsh
+for config_file in `ls $HOME/.zsh/lib/*.zsh | grep -v functions.zsh`; do source $config_file; done
 
 CUSTOM_ZSH_THEME="alvarobp"
 [[ -s $HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme ]] && source "$HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme"

@@ -6,9 +6,11 @@ alias ccd='cd $HOME/code'
 alias curlo='curl -O'
 alias eed='emacs'
 alias gam='g amend'
+alias gci='g ci'
 alias gdc='g dc'
 alias gdi='g di'
 alias gl='g l'
+alias gla='g la'
 alias gr='g rebase'
 alias grc='g rebase --continue'
 alias gri='g rebase -i'
@@ -28,7 +30,6 @@ alias vst='vagrant status'
 alias wgetn='wget --no-check-certificate '
 
 # OSX specific
-source $(dirname $0)/functions.zsh
 if uname -a | downcase | grep -q 'darwin'; then
   alias zcat='gunzip -c'
 
