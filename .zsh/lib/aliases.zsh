@@ -28,6 +28,8 @@ alias vp='vagrant provision'
 alias vs='vagrant ssh'
 alias vst='vagrant status'
 alias wgetn='wget --no-check-certificate '
+alias z='zeus'
+alias zr='zeus rspec'
 
 # OSX specific
 if uname -a | downcase | grep -q 'darwin'; then
