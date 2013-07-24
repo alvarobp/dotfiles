@@ -2,8 +2,6 @@
 
 COMMON_USER="vagrant"
 
-sudo su
-
 # Install zsh
 
 apt-get install zsh
