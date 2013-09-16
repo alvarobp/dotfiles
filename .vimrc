@@ -12,6 +12,8 @@ set hlsearch
 
 " set number
 
+set hidden
+
 syntax on
 set t_Co=256
 set background=dark
