@@ -8,7 +8,6 @@
 (load "alvarobp/modes/lisp")
 (load "alvarobp/modes/sh")
 (load "alvarobp/modes/recentf")
-(load "alvarobp/modes/textmate")
 
 ;; all modes
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -58,6 +57,10 @@
 
 ;; dired
 (put 'dired-find-alternate-file 'disabled nil)
+
+;; ido
+(require 'ido)
+(ido-mode t)
 
 ;; full-ack
 (vendor 'full-ack)

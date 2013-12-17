@@ -29,8 +29,5 @@
 (global-set-key [(f2)] 'ack)
 (global-set-key [(control f2)] 'ack-same)
 
-;; Redefine bindings set by textmate.el for emacs cocoa version
-(when (featurep 'ns)
-  (global-set-key [(control c)(control k)] 'comment-or-uncomment-region-or-line)
-  (global-set-key [(meta shift t)] 'textmate-goto-file)
-  (global-set-key [(meta t)] 'transpose-words))
+;; Comment region or line
+(global-set-key (kbd "C-c C-k") 'comment-or-uncomment-region-or-line)
