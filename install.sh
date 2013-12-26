@@ -64,6 +64,7 @@ check_and_link_file ".tmux.conf"
 # VIM
 check_and_link_file ".vimrc"
 check_and_link_directory ".vim"
+mkdir -p $HOME/.vim/tmp
 
 # Binaries
 mkdir -p $HOME/bin
