@@ -39,7 +39,7 @@ export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 export TERM=xterm-256color
 
 ## Editors
-export EDITOR=emacs
+export EDITOR=vim
 export BUNDLER_EDITOR=$EDITOR
 
 # Custom extensions (outside dotfiles)
