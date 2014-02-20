@@ -35,8 +35,3 @@ tar xvfz tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
 ./configure --prefix=/usr/local
 make install
-
-# Make rbenv writable by common user
-
-chgrp -R $COMMON_USER /usr/local/rbenv
-chmod -R g+rwxXs /usr/local/rbenv
