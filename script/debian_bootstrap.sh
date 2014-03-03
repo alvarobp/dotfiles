@@ -35,3 +35,10 @@ tar xvfz tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
 ./configure --prefix=/usr/local
 make install
+
+# Install ack
+export ACK_VERSION="2.12"
+su $COMMON_USER -c "
+mkdir -p /home/$COMMON_USER/bin
+curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
+"
