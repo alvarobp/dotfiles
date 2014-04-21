@@ -78,6 +78,7 @@ NeoBundle 'godlygeek/tabular'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'bling/vim-bufferline'
+NeoBundle 'moll/vim-bbye'
 
 filetype plugin indent on         " Turn on file type detection.
 
