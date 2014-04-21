@@ -4,11 +4,11 @@ COMMON_USER="vagrant"
 
 # Install zsh
 
-apt-get install zsh
+apt-get install -y zsh
 
 # dotfiles
 
-su $COMMON_USER -c "
+sudo -u $COMMON_USER bash -c "
 cd /home/$COMMON_USER
 git clone https://github.com/alvarobp/dotfiles.git .dotfiles
 bash .dotfiles/install.sh
@@ -18,12 +18,16 @@ bash .dotfiles/install.sh
 
 echo "source /etc/profile" >> /etc/zsh/zprofile
 
+# Install vim
+
+apt-get install -y vim
+
 # Install emacs snapshot
 
 wget -q -O - http://emacs.naquadah.org/key.gpg | apt-key add -
 echo 'deb http://emacs.naquadah.org/ stable/' > /etc/apt/sources.list.d/emacs-snapshot.list
 apt-get update
-apt-get install emacs-snapshot-nox
+apt-get install -y emacs-snapshot-nox
 
 # Install tmux from source
 
@@ -38,7 +42,7 @@ make install
 
 # Install ack
 export ACK_VERSION="2.12"
-su $COMMON_USER -c "
+sudo -u $COMMON_USER bash -c "
 mkdir -p /home/$COMMON_USER/bin
 curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
 "
