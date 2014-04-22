@@ -121,6 +121,9 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
+" Repeat last command
+:noremap <C-P> @:<CR>
+
 " Configure bufferline
 let g:bufferline_echo = 0
 autocmd VimEnter *
