@@ -42,5 +42,7 @@ export TERM=xterm-256color
 export EDITOR=vim
 export BUNDLER_EDITOR=$EDITOR
 
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 # Custom extensions (outside dotfiles)
 [[ -s $HOME/.zsh-custom ]] && source $HOME/.zsh-custom
