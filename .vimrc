@@ -11,6 +11,8 @@ set softtabstop=2                 " Makes the spaces feel like real tabs
 set autoindent
 set backspace=indent,eol,start    " Intuitive backspacing.
 
+set pastetoggle=<F2>              " Toggle paste mode
+
 set showmatch
 set incsearch                     " Highlight matches as you type.
 set hlsearch                      " Highlight matches.
