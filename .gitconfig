@@ -1,3 +1,7 @@
+[status]
+  short = true
+  branch = true
+
 [merge]
   tool = opendiff
 
@@ -14,7 +18,7 @@
 [alias]
   review = !"git log master..origin/master"
   am = am -3
-  st = status
+  st = status --short --branch
   co = checkout
   di = diff
   dc = diff --cached
