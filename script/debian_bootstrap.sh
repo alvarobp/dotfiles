@@ -32,7 +32,12 @@ apt-get install -y emacs-snapshot-nox
 # Install tmux from source
 
 export TMUX_VERSION="1.8"
-apt-get install -y libncurses5-dev libevent-dev
+if grep -q '^6' /etc/debian_version; then
+  apt-get install -y libevent-dev -t squeeze-backports
+else
+  apt-get install -y libevent-dev
+fi
+apt-get install -y libncurses5-dev
 cd /usr/src
 wget http://heanet.dl.sourceforge.net/project/tmux/tmux/tmux-${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
 tar xvfz tmux-${TMUX_VERSION}.tar.gz
@@ -41,6 +46,7 @@ cd tmux-${TMUX_VERSION}
 make install
 
 # Install ack
+
 export ACK_VERSION="2.12"
 sudo -u $COMMON_USER bash -c "
 mkdir -p /home/$COMMON_USER/bin
