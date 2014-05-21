@@ -168,23 +168,36 @@ augroup END
 " Run tests
 nnoremap <leader>t :call RunTestFile()<cr>
 nnoremap <leader>T :call RunNearestTest()<cr>
-nnoremap <leader>a :call RunTests()<cr>
+nnoremap <leader>a :call RunAllTests()<cr>
+
+function! RspecCommandPath()
+  if filereadable("bin/rspec")
+    return "bin/rspec"
+  else
+    return "bundle exec rspec"
+  endif
+endfunction
 
 function! RunTestFile(...)
-    if a:0
-        let command_suffix = a:1
-    else
-        let command_suffix = ""
-    endif
+  if a:0
+    let command_suffix = a:1
+  else
+    let command_suffix = ""
+  endif
 
-    exec ":!bundle exec rspec --color " . @% . command_suffix
+  call RunTests(@% . command_suffix)
 endfunction
 
 function! RunNearestTest()
-    let spec_line_number = line('.')
-    call RunTestFile(":" . spec_line_number)
+  let spec_line_number = line('.')
+  call RunTestFile(":" . spec_line_number)
 endfunction
 
-function! RunTests()
-    exec ":!bundle exec rspec --color spec"
+function! RunAllTests()
+  call RunTests("spec")
+endfunction
+
+function! RunTests(...)
+  let rspec_arguments = a:1
+  exec ":!" . RspecCommandPath() . " --color " . rspec_arguments
 endfunction
