@@ -1,5 +1,9 @@
 #!/bin/bash
 
+function debian_squeeze () {
+  grep -q '^6' /etc/debian_version
+}
+
 COMMON_USER="vagrant"
 
 # Install zsh
@@ -20,7 +24,11 @@ echo "source /etc/profile" >> /etc/zsh/zprofile
 
 # Install vim
 
-apt-get install -y vim
+if debian_squeeze; then
+  apt-get install vim -t squeeze-backports
+else
+  apt-get install -y vim
+fi
 
 # Install emacs snapshot
 
@@ -32,7 +40,7 @@ apt-get install -y emacs-snapshot-nox
 # Install tmux from source
 
 export TMUX_VERSION="1.8"
-if grep -q '^6' /etc/debian_version; then
+if debian_squeeze; then
   apt-get install -y libevent-dev -t squeeze-backports
 else
   apt-get install -y libevent-dev
