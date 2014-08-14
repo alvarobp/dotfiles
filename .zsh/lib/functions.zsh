@@ -8,3 +8,7 @@ unalias gc
 function gc {
   git commit -m "$*"
 }
+
+function gcn {
+  git commit -n -m "$*"
+}
