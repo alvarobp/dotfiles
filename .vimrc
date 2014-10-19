@@ -88,6 +88,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'moll/vim-bbye'
+NeoBundle 'kien/ctrlp.vim'
 
 filetype plugin indent on         " Turn on file type detection.
 
@@ -131,7 +132,7 @@ nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
 " Repeat last command
-:noremap <C-P> @:<CR>
+" :noremap <C-P> @:<CR>
 
 " Configure bufferline
 let g:bufferline_echo = 0
@@ -164,6 +165,13 @@ augroup vimrc-auto-mkdir
     endif
   endfunction
 augroup END
+
+" Configure CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlPCurWD'
+" let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
+let g:ctrlp_use_caching = 0
+let g:ctrlp_switch_buffer = 0 " open in new buffer
 
 " Run tests
 nnoremap <leader>t :call RunTestFile()<cr>
