@@ -14,8 +14,7 @@ fi
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
-brew tap phinze/homebrew-cask
-brew install brew-cask
+brew install caskroom/cask/brew-cask
 
 brew cask alfred link
 
