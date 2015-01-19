@@ -16,10 +16,7 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 brew install caskroom/cask/brew-cask
 
-brew cask alfred link
-
 brew cask install google-chrome
-brew cask install alfred
 brew cask install appcleaner
 brew cask install iterm2
 brew cask install textmate
@@ -27,7 +24,8 @@ brew cask install the-unarchiver
 brew cask install dropbox
 brew cask install vlc
 brew cask install transmission
-brew cask install truecrypt
 brew cask install virtualbox
 brew cask install vagrant
 brew cask install spotify
+brew cask install spectacle
+brew cask install menumeters
