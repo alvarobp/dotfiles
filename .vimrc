@@ -89,6 +89,8 @@ NeoBundle 'thoughtbot/vim-rspec'
 NeoBundle 'bling/vim-bufferline'
 NeoBundle 'moll/vim-bbye'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'pangloss/vim-javascript'
+NeoBundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on         " Turn on file type detection.
 
