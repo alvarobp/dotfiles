@@ -61,6 +61,7 @@ set splitright
 
 "" Load plugins
 runtime macros/matchit.vim        " Load the matchit plugin.
+runtime! plugins/rspec.vim
 
 if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim/
@@ -174,40 +175,3 @@ let g:ctrlp_cmd = 'CtrlPCurWD'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer = 0 " open in new buffer
-
-" Run tests
-nnoremap <leader>t :call RunTestFile()<cr>
-nnoremap <leader>T :call RunNearestTest()<cr>
-nnoremap <leader>a :call RunAllTests()<cr>
-
-function! RspecCommandPath()
-  if filereadable("bin/rspec")
-    return "bin/rspec"
-  else
-    return "bundle exec rspec"
-  endif
-endfunction
-
-function! RunTestFile(...)
-  if a:0
-    let command_suffix = a:1
-  else
-    let command_suffix = ""
-  endif
-
-  call RunTests(@% . command_suffix)
-endfunction
-
-function! RunNearestTest()
-  let spec_line_number = line('.')
-  call RunTestFile(":" . spec_line_number)
-endfunction
-
-function! RunAllTests()
-  call RunTests("spec")
-endfunction
-
-function! RunTests(...)
-  let rspec_arguments = a:1
-  exec ":!" . RspecCommandPath() . " --color " . rspec_arguments
-endfunction
