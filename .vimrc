@@ -106,6 +106,8 @@ autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
 
 "" Mappings
+let mapleader=","
+
 imap ;; <Esc>
 
 " Disable arroy keys
@@ -114,13 +116,14 @@ nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
 
-let mapleader=","
 if exists(":Tabularize")
-  nmap <Leader>a= :Tabularize /=<CR>
-  vmap <Leader>a= :Tabularize /=<CR>
-  nmap <Leader>a: :Tabularize /:\zs<CR>
-  vmap <Leader>a: :Tabularize /:\zs<CR>
+  nmap <leader>a= :Tabularize /=<CR>
+  vmap <leader>a= :Tabularize /=<CR>
+  nmap <leader>a: :Tabularize /:\zs<CR>
+  vmap <leader>a: :Tabularize /:\zs<CR>
 endif
+
+noremap <leader><leader> <c-^>
 
 " Edit another file in the same directory as the current file
 " uses expression to extract path from current file's path
@@ -176,3 +179,4 @@ let g:ctrlp_cmd = 'CtrlPCurWD'
 " let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard', 'find %s -type f']
 let g:ctrlp_use_caching = 0
 let g:ctrlp_switch_buffer = 0 " open in new buffer
+map <leader>b :CtrlPBuffer<cr>
