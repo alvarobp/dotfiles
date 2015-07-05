@@ -6,6 +6,8 @@ function debian_squeeze () {
 
 COMMON_USER="vagrant"
 
+apt-get update
+
 # Install zsh
 
 apt-get install -y zsh
@@ -39,7 +41,7 @@ apt-get install -y emacs-snapshot-nox
 
 # Install tmux from source
 
-export TMUX_VERSION="1.8"
+export TMUX_VERSION="2.0"
 if debian_squeeze; then
   apt-get install -y libevent-dev -t squeeze-backports
 else
@@ -55,7 +57,7 @@ make install
 
 # Install ack
 
-export ACK_VERSION="2.12"
+export ACK_VERSION="2.14"
 sudo -u $COMMON_USER bash -c "
 mkdir -p /home/$COMMON_USER/bin
 curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
