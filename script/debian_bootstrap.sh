@@ -32,13 +32,6 @@ else
   apt-get install -y vim
 fi
 
-# Install emacs snapshot
-
-wget -q -O - http://emacs.naquadah.org/key.gpg | apt-key add -
-echo 'deb http://emacs.naquadah.org/ stable/' > /etc/apt/sources.list.d/emacs-snapshot.list
-apt-get update
-apt-get install -y emacs-snapshot-nox
-
 # Install tmux from source
 
 export TMUX_VERSION="2.0"
