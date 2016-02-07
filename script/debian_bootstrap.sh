@@ -55,3 +55,16 @@ sudo -u $COMMON_USER bash -c "
 mkdir -p /home/$COMMON_USER/bin
 curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
 "
+
+# Install Git
+sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+
+export GIT_VERSION="2.7.1"
+cd /usr/src
+wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz
+tar xvfz git-${GIT_VERSION}.tar.gz
+cd git-${GIT_VERSION}
+make configure
+./configure --prefix=/usr
+make all doc info
+sudo make install
