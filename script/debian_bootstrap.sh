@@ -22,7 +22,9 @@ bash .dotfiles/install.sh
 
 # Make zsh load profile.d scripts
 
-echo "source /etc/profile" >> /etc/zsh/zprofile
+if ! grep -q 'source /etc/profile' /etc/zsh/zprofile; then
+  echo "source /etc/profile" >> /etc/zsh/zprofile
+fi
 
 # Install vim
 
@@ -34,7 +36,7 @@ fi
 
 # Install tmux from source
 
-export TMUX_VERSION="2.0"
+export TMUX_VERSION="2.1"
 if debian_squeeze; then
   apt-get install -y libevent-dev -t squeeze-backports
 else
@@ -42,7 +44,7 @@ else
 fi
 apt-get install -y libncurses5-dev
 cd /usr/src
-wget http://heanet.dl.sourceforge.net/project/tmux/tmux/tmux-${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
+wget https://github.com/tmux/tmux/releases/download/${TMUX_VERSION}/tmux-${TMUX_VERSION}.tar.gz
 tar xvfz tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
 ./configure --prefix=/usr/local
@@ -59,7 +61,7 @@ curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0
 # Install Git
 sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
 
-export GIT_VERSION="2.7.1"
+export GIT_VERSION="2.7.2"
 cd /usr/src
 wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz
 tar xvfz git-${GIT_VERSION}.tar.gz
