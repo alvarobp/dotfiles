@@ -59,9 +59,10 @@ curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0
 "
 
 # Install Git
-sudo apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
-
 export GIT_VERSION="2.7.2"
+
+sudo apt-get install --force-yes -y libcurl4-gnutls-dev libexpat1-dev gettext libz-dev libssl-dev
+
 cd /usr/src
 wget https://www.kernel.org/pub/software/scm/git/git-${GIT_VERSION}.tar.gz
 tar xvfz git-${GIT_VERSION}.tar.gz
