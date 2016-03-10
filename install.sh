@@ -65,6 +65,13 @@ check_and_link_file ".tmux.conf"
 check_and_link_file ".vimrc"
 check_and_link_directory ".vim"
 mkdir -p $HOME/.vim/tmp
+if which git &> /dev/null; then
+  echo "Installing vim plugins..."
+  vim +NeoBundleInstall +qall
+  echo "vim plugins installed"
+else
+  echo "Vim plugins were not installed. git is not available."
+fi
 
 # Binaries
 mkdir -p $HOME/bin
