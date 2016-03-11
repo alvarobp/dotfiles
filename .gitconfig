@@ -40,6 +40,7 @@
   ra = !git r --all
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
   add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+  puf = push --force-with-lease
   # up = !git stash && git pull --rebase && git push origin `git name-rev --name-only HEAD` && git stash pop
 
 [branch]
