@@ -48,8 +48,8 @@ function check_and_install_oh_my_zsh() {
 
 # ZSH
 check_and_install_oh_my_zsh
-check_and_link_file ".zshrc"
-check_and_link_directory ".zsh"
+check_and_link_file "zsh/zshrc" ".zshrc"
+check_and_link_directory "zsh/zsh" ".zsh"
 
 # EMACS
 check_and_link_file ".emacs"
