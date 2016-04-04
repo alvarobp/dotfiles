@@ -5,10 +5,6 @@ function check_and_link_directory() {
   local source_path=$1
   local destination_path=$2
 
-  if [[ -z $destination_path ]]; then
-    local destination_path=$source_path
-  fi
-
   if [ -d ~/$destination_path ] || [ -h ~/$destination_path ]
   then
     echo "Found ~/$destination_path Backing up to ~/$destination_path.pre-$current_date";
@@ -21,10 +17,6 @@ function check_and_link_directory() {
 function check_and_link_file() {
   local source_path=$1
   local destination_path=$2
-
-  if [[ -z $destination_path ]]; then
-    local destination_path=$source_path
-  fi
 
   if [ -f ~/$destination_path ] || [ -h ~/$destination_path ]
   then
@@ -85,5 +77,5 @@ fi
 mkdir -p $HOME/bin
 binaryfiles=`ls $dotfiles_path/bin/`
 for binfile in $binaryfiles; do
-  check_and_link_file "bin/$binfile"
+  check_and_link_file "bin/$binfile" "bin/$binfile"
 done
