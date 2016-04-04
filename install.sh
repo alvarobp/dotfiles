@@ -52,8 +52,8 @@ check_and_link_file "zsh/zshrc" ".zshrc"
 check_and_link_directory "zsh/zsh" ".zsh"
 
 # EMACS
-check_and_link_file ".emacs"
-check_and_link_directory ".emacs.d"
+check_and_link_file "emacs/emacs" ".emacs"
+check_and_link_directory "emacs/emacs.d" ".emacs.d"
 
 # EDITRC
 check_and_link_file ".editrc"
