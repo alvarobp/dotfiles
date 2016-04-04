@@ -59,8 +59,8 @@ check_and_link_directory "emacs/emacs.d" ".emacs.d"
 check_and_link_file ".editrc"
 
 # GIT
-check_and_link_file ".gitconfig"
-check_and_link_file ".githelpers"
+check_and_link_file "git/gitconfig" ".gitconfig"
+check_and_link_file "git/githelpers" ".githelpers"
 
 # GEM
 check_and_link_file ".gemrc"
