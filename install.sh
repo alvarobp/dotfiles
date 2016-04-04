@@ -62,11 +62,9 @@ check_and_link_file ".editrc"
 check_and_link_file "git/gitconfig" ".gitconfig"
 check_and_link_file "git/githelpers" ".githelpers"
 
-# GEM
-check_and_link_file ".gemrc"
-
-# IRB
-check_and_link_file ".irbrc"
+# Ruby
+check_and_link_file "ruby/gemrc" ".gemrc"
+check_and_link_file "ruby/irbrc" ".irbrc"
 
 # TMUX
 check_and_link_file ".tmux.conf"
