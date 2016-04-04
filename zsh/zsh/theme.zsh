@@ -1,15 +1,18 @@
+autoload colors; colors;
+
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
+
+setopt prompt_subst
+
+function git_prompt_info_without_dirty() {
+  ref=$(command git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  echo "%{$reset_color%}(${ref#refs/heads/}%{$reset_color%})"
+}
+
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="white"; fi
 
 PROMPT='%{$fg[$NCOLOR]%}%{$fg_bold[blue]%}%{$reset_color%}[%n@%m:%~]%{$reset_color%}$(git_prompt_info_without_dirty)%(!.#.$) '
-#RPROMPT='[%*]'
-
-# git theming
-#ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg_bold[blue]%}(%{$fg_no_bold[yellow]%}%B"
-#ZSH_THEME_GIT_PROMPT_SUFFIX="%b%{$fg_bold[blue]%})%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$reset_color%}("
-ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%})"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg_bold[red]%}✗"
 
 # LS colors, made with http://geoff.greer.fm/lscolors/
 export LSCOLORS="exfxcxdxbxegedabagacad"

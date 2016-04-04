@@ -27,19 +27,7 @@ function check_and_link_file() {
   echo "Linked ~/$destination_path"
 }
 
-function check_and_install_oh_my_zsh() {
-  if [ ! -d ~/.oh-my-zsh ]
-  then
-    echo "Cloning Oh My Zsh..."
-    /usr/bin/env git clone https://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
-
-    echo "Setting default shell to zsh. Please enter your password."
-    chsh -s `which zsh`
-  fi
-}
-
 # ZSH
-check_and_install_oh_my_zsh
 check_and_link_file "zsh/zshrc" ".zshrc"
 check_and_link_directory "zsh/zsh" ".zsh"
 
