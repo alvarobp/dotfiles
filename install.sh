@@ -56,7 +56,7 @@ check_and_link_file "emacs/emacs" ".emacs"
 check_and_link_directory "emacs/emacs.d" ".emacs.d"
 
 # EDITRC
-check_and_link_file ".editrc"
+check_and_link_file "config/editrc" ".editrc"
 
 # GIT
 check_and_link_file "git/gitconfig" ".gitconfig"
@@ -67,7 +67,7 @@ check_and_link_file "ruby/gemrc" ".gemrc"
 check_and_link_file "ruby/irbrc" ".irbrc"
 
 # TMUX
-check_and_link_file ".tmux.conf"
+check_and_link_file "config/tmux.conf" ".tmux.conf"
 
 # VIM
 check_and_link_file "vim/vimrc" ".vimrc"
