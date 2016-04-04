@@ -2,27 +2,37 @@ dotfiles_path=$(cd "$(dirname "$0")"; pwd)
 current_date=`date "+%Y%m%d%H%M%S"`
 
 function check_and_link_directory() {
-  local path=$1
+  local source_path=$1
+  local destination_path=$2
 
-  if [ -d ~/$path ] || [ -h ~/$path ]
-  then
-    echo "Found ~/$path Backing up to ~/$path.pre-$current_date";
-    mv ~/$path ~/$path.pre-$current_date
+  if [[ -z $destination_path ]]; then
+    local destination_path=$source_path
   fi
-  ln -s $dotfiles_path/$path ~/$path
-  echo "Linked ~/$path"
+
+  if [ -d ~/$destination_path ] || [ -h ~/$destination_path ]
+  then
+    echo "Found ~/$destination_path Backing up to ~/$destination_path.pre-$current_date";
+    mv ~/$destination_path ~/$destination_path.pre-$current_date
+  fi
+  ln -s $dotfiles_path/$source_path ~/$destination_path
+  echo "Linked ~/$destination_path"
 }
 
 function check_and_link_file() {
-  local path=$1
+  local source_path=$1
+  local destination_path=$2
 
-  if [ -f ~/$path ] || [ -h ~/$path ]
-  then
-    echo "Found ~/$path Backing up to ~/$path.pre-$current_date";
-    mv ~/$path ~/$path.pre-$current_date
+  if [[ -z $destination_path ]]; then
+    local destination_path=$source_path
   fi
-  ln -s $dotfiles_path/$path ~/$path
-  echo "Linked ~/$path"
+
+  if [ -f ~/$destination_path ] || [ -h ~/$destination_path ]
+  then
+    echo "Found ~/$destination_path Backing up to ~/$destination_path.pre-$current_date";
+    mv ~/$destination_path ~/$destination_path.pre-$current_date
+  fi
+  ln -s $dotfiles_path/$source_path ~/$destination_path
+  echo "Linked ~/$destination_path"
 }
 
 function check_and_install_oh_my_zsh() {
@@ -62,10 +72,10 @@ check_and_link_file ".irbrc"
 check_and_link_file ".tmux.conf"
 
 # VIM
-check_and_link_file ".vimrc"
-check_and_link_directory ".vim"
+check_and_link_file "vim/vimrc" ".vimrc"
+check_and_link_directory "vim/vim" ".vim"
 mkdir -p $HOME/.vim/tmp
-if which git &> /dev/null; then
+if which vim && which git &> /dev/null; then
   echo "Installing vim plugins..."
   vim +NeoBundleInstall +qall
   echo "vim plugins installed"
