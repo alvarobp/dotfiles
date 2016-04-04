@@ -1,0 +1,8 @@
+alias be='bundle exec '
+alias ber='bundle exec rspec'
+alias irb='irb --readline'
+which bundle &> /dev/null && alias rake='bundle exec rake'
+alias rdm='rake db:migrate'
+alias rdmtp='rake db:migrate db:test:prepare'
+alias rdrm='rake db:drop db:create db:migrate db:test:prepare'
+alias rdtp='rake db:migrate'

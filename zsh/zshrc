@@ -28,11 +28,15 @@ plugins=(git vagrant z)
 
 source $ZSH/oh-my-zsh.sh
 
-source $HOME/.zsh/lib/functions.zsh
-for config_file in `ls $HOME/.zsh/lib/*.zsh | grep -v functions.zsh`; do source $config_file; done
-
 CUSTOM_ZSH_THEME="alvarobp"
 [[ -s $HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme ]] && source "$HOME/.zsh/themes/$CUSTOM_ZSH_THEME.zsh-theme"
+
+for config_file in `ls $HOME/.zsh/lib/*.zsh`; do source $config_file; done
+
+## Aliases
+for alias_file in `ls $HOME/.zsh/aliases/*.zsh`; do source $alias_file; done
+# Machine specific aliases
+[[ -s $HOME/.aliases ]] && source $HOME/.aliases
 
 export PATH=/usr/local/bin:/usr/local/sbin:$HOME/bin:$PATH
 
