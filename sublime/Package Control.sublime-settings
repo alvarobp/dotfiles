@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"Bootstrap 3 Snippets",
+		"FileBrowser",
+		"JSONLint",
+		"Package Control",
+		"Pretty JSON",
+		"SideBarEnhancements",
+		"Whitespace"
+	]
+}
