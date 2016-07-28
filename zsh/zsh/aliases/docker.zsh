@@ -1,0 +1,5 @@
+alias dce="docker-compose exec"
+alias dcu="docker-compose up"
+alias dcub="docker-compose up --build"
+alias dcd="docker-compose down"
+alias dockercleanup="docker rmi -f \$(docker images -qf dangling=true); docker volume rm \$(docker volume ls -qf dangling=true)"
