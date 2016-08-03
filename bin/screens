@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# Handle displays on Macbook Pro 11,1
+
+BUILT_IN="eDP1"
+DELL27="DP2"
+
+if [ $# -lt 1 ]
+then
+  echo "Usage: $(basename $0) [builtin|dell27]"
+  exit
+fi
+
+case "$1" in
+builtin)
+  echo "Setting up built-in screen..."
+  xrandr --output $BUILT_IN --scale 1x1 --pos 0x0
+  ;;
+dell27)
+  if xrandr --listmonitors | grep -q $DELL27; then
+    echo "Setting up Dell27 screen..."
+    xrandr --output $DELL27 --scale 1.5x1.5 --pos 0x0
+    xrandr --output $BUILT_IN --scale 1x1 --pos 3840x960
+  else
+    echo "$DELL27 not connected. Exiting..."
+  fi
+  ;;
+esac
