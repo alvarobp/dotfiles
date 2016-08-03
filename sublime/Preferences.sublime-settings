@@ -1,5 +1,7 @@
 {
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
 	"font_size": 20,
+	"default_line_ending": "unix",
 	"ignored_packages":
 	[
 		"Vintage"
