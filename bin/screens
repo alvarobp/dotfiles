@@ -20,6 +20,7 @@ dell27)
   if xrandr --listmonitors | grep -q $DELL27; then
     echo "Setting up Dell27 screen..."
     xrandr --output $DELL27 --scale 1.5x1.5 --pos 0x0
+    sleep 1
     xrandr --output $BUILT_IN --scale 1x1 --pos 3840x960
   else
     echo "$DELL27 not connected. Exiting..."
