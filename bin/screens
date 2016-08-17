@@ -3,7 +3,7 @@
 # Handle displays on Macbook Pro 11,1
 
 BUILT_IN="eDP1"
-DELL27="DP2"
+DELL27=`xrandr | grep -e '^DP[[:digit:]] connected' | sed 's/^\(DP[[:digit:]]\).*/\1/'`
 
 if [ $# -lt 1 ]
 then
