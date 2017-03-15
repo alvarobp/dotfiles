@@ -34,6 +34,10 @@ else
   apt-get install -y vim
 fi
 
+# Install silversearcher-ag
+
+apt-get install -y silversearcher-ag
+
 # Install tmux from source
 
 export TMUX_VERSION="2.1"
@@ -49,14 +53,6 @@ tar xvfz tmux-${TMUX_VERSION}.tar.gz
 cd tmux-${TMUX_VERSION}
 ./configure --prefix=/usr/local
 make install
-
-# Install ack
-
-export ACK_VERSION="2.14"
-sudo -u $COMMON_USER bash -c "
-mkdir -p /home/$COMMON_USER/bin
-curl http://beyondgrep.com/ack-${ACK_VERSION}-single-file > ~/bin/ack && chmod 0755 ~/bin/ack
-"
 
 # Install Git
 export GIT_VERSION="2.7.2"
