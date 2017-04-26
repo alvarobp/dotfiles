@@ -1,0 +1,28 @@
+"*":
+  core:
+    telemetryConsent: "no"
+  editor:
+    fontSize: 20
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "502d03dc-e697-5ff1-5efe-5f899d009048"
+  "one-dark-ui": {}
+  "package-sync":
+    createOnChange: true
+    forceOverwrite: true
+  "ruby-block-converter": {}
+  "ruby-test":
+    rspecAllCommand: "bundle exec rspec --tty spec"
+    rspecFileCommand: "bundle exec rspec --tty {relative_path}"
+    rspecSingleCommand: "bundle exec rspec --tty {relative_path}:{line_number}"
+    shell: "zsh"
+    specFramework: "rspec"
+    testFramework: "minitest"
+  "terminal-plus":
+    core: {}
+    style: {}
+  welcome:
+    showOnStartup: false

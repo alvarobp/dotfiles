@@ -1,0 +1,5 @@
+packages: [
+  "atom-ternjs"
+  "package-sync"
+  "Sublime-Style-Column-Selection"
+]
