@@ -4,3 +4,7 @@
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+if in_osx && which brew &> /dev/null; then
+  source "$(brew --prefix)/etc/bash_completion"
+fi

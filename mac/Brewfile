@@ -2,6 +2,7 @@ brew 'coreutils'
 brew 'findutils'
 brew 'gnu-sed', args: ['--with-default-names']
 
+brew 'bash-completion'
 brew 'ack'
 brew 'htop'
 brew 'ncdu'
