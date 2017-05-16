@@ -1,0 +1,20 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+# Functions
+for functions_file in `ls $HOME/.shell/functions/*.sh`; do source $functions_file; done
+
+# Aliases
+for alias_file in `ls $HOME/.shell/aliases/*.sh`; do source $alias_file; done
+
+# Variables
+for variables_file in `ls $HOME/.shell/variables/*.sh`; do source $variables_file; done
+
+# Bash Functions
+for functions_file in `ls $HOME/.bash/functions/*.sh`; do source $functions_file; done
+
+# Bash Configuration
+for config_file in `ls $HOME/.bash/config/*.sh`; do source $config_file; done
+
+# Custom extensions (outside dotfiles)
+[[ -s $HOME/.bashrc-custom ]] && source $HOME/.bashrc-custom

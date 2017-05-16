@@ -1,0 +1,16 @@
+# Functions
+for functions_file in `ls $HOME/.shell/functions/*.sh`; do source $functions_file; done
+
+## Aliases
+for alias_file in `ls $HOME/.shell/aliases/*.sh`; do source $alias_file; done
+
+# Variables
+for variables_file in `ls $HOME/.shell/variables/*.sh`; do source $variables_file; done
+
+# Configuration
+for config_file in `ls $HOME/.zsh/config/*.zsh`; do source $config_file; done
+
+source "$HOME/.zsh/theme.zsh"
+
+# Custom extensions (outside dotfiles)
+[[ -s $HOME/.zsh-custom ]] && source $HOME/.zsh-custom

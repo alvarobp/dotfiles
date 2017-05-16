@@ -1,5 +1,5 @@
 # OSX specific aliases
-if [[ "$(uname)" == "Darwin" ]]; then
+if in_osx; then
   alias zcat='gunzip -c'
 
   if [ -d /Applications/Emacs.app ]; then

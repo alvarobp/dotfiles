@@ -1,7 +1,11 @@
 dotfiles_path=$(cd "$(dirname "$0")"; pwd)
 current_date=`date "+%Y%m%d%H%M%S"`
 
-function check_and_link_directory() {
+in_osx() {
+  [[ "$(uname)" == "Darwin" ]]
+}
+
+check_and_link_directory() {
   local source_path=$1
   local destination_path=$2
 
@@ -14,7 +18,7 @@ function check_and_link_directory() {
   echo "Linked ~/$destination_path"
 }
 
-function check_and_link_file() {
+check_and_link_file() {
   local source_path=$1
   local destination_path=$2
 
@@ -27,9 +31,17 @@ function check_and_link_file() {
   echo "Linked ~/$destination_path"
 }
 
-# ZSH
-check_and_link_file "zsh/zshrc" ".zshrc"
-check_and_link_directory "zsh/zsh" ".zsh"
+# Shell - Common
+check_and_link_directory "shell" ".shell"
+
+# Shell - Bash
+check_and_link_file "shell/bash/bashrc" ".bashrc"
+check_and_link_directory "shell/bash/bash" ".bash"
+in_osx && check_and_link_file "shell/bash/bash_profile" ".bash_profile"
+
+# Shell - Zsh
+check_and_link_file "shell/zsh/zshrc" ".zshrc"
+check_and_link_directory "shell/zsh/zsh" ".zsh"
 
 # EMACS
 check_and_link_file "emacs/emacs" ".emacs"
