@@ -6,5 +6,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 if in_osx && which brew &> /dev/null; then
-  source "$(brew --prefix)/etc/bash_completion"
+  path="$(brew --prefix)/etc/bash_completion"
+  [[ -f $path ]] && source $path
 fi
