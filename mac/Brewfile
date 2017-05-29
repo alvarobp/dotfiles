@@ -30,5 +30,5 @@ cask 'transmission'
 cask 'tunnelblick'
 cask 'vlc'
 
-brew tap caskroom/versions
+tap 'caskroom/versions'
 cask 'docker-edge'
