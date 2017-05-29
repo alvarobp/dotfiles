@@ -25,7 +25,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ $(declare -F __git_ps1) ];then
-  PS1='${debian_chroot:+($debian_chroot)}[\u\[\033[00m\]:\w]$(__git_ps1 "(%s)")\$ '
+  PS1='${debian_chroot:+($debian_chroot)}[\u\[\033[00m\]:\W]$(__git_ps1 "(%s)")\$ '
 else
-  PS1='${debian_chroot:+($debian_chroot)}[\u\[\033[00m\]:\w]\$ '
+  PS1='${debian_chroot:+($debian_chroot)}[\u\[\033[00m\]:\W]\$ '
 fi
