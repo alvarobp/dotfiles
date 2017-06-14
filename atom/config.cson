@@ -13,6 +13,8 @@
   "package-sync":
     createOnChange: true
     forceOverwrite: true
+  "px-to-rem":
+    precision: 4
   "ruby-block-converter": {}
   "ruby-test":
     rspecAllCommand: "bundle exec rspec --tty spec"

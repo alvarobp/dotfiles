@@ -1,5 +1,12 @@
 packages: [
   "atom-ternjs"
+  "busy-signal"
+  "intentions"
+  "linter"
+  "linter-jsonlint"
+  "linter-ui-default"
   "package-sync"
+  "pretty-json"
+  "px-to-rem"
   "Sublime-Style-Column-Selection"
 ]
