@@ -33,3 +33,6 @@
 
 'atom-text-editor':
   'cmd-alt-l': 'editor:auto-indent'
+
+'atom-workspace':
+  'cmd-n': 'tree-view:add-file'
