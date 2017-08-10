@@ -4,7 +4,7 @@
 
 # REMEMBER to install the package-sync package and run "package-sync:sync" command
 
-if ! which -s realpath; then
+if [[ "$(uname)" == "Darwin" ]] && ! which -s realpath; then
   echo 'Error: realpath is missing. Please install coreutils with homebrew.'
   exit 1
 fi
