@@ -1,7 +1,9 @@
 packages: [
   "atom-ternjs"
   "busy-signal"
+  "fix-indent-on-paste"
   "intentions"
+  "language-terraform"
   "linter"
   "linter-jsonlint"
   "linter-ui-default"
