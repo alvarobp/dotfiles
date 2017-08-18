@@ -1,5 +1,6 @@
 "*":
   core:
+    allowPendingPaneItems: false
     telemetryConsent: "no"
   editor:
     fontSize: 20
