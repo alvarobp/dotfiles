@@ -1,6 +1,7 @@
 alias dcd="docker-compose down"
 alias dce="docker-compose exec"
 alias dcr="docker-compose run"
+alias dcrr="docker-compose run --rm"
 alias dcu="docker-compose up"
 alias dcub="docker-compose up --build"
 alias dcl="docker-compose logs"
