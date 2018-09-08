@@ -18,7 +18,7 @@ CONFIG_DIR ?= $(DST_DIR)/.config
 LINK  := ln -sf
 MKDIR := mkdir -p
 CLONE := git clone
-RM    := rm -fr
+RM    := rm -f
 
 .PHONY: default install clean
 
