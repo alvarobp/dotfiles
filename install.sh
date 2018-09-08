@@ -31,12 +31,6 @@ check_and_link_file() {
   echo "Linked ~/$destination_path"
 }
 
-# Shell - Common
-make shell
-
-# EMACS
-make emacs
-
 # EDITRC
 check_and_link_file "config/editrc" ".editrc"
 
@@ -50,9 +44,6 @@ check_and_link_file "ruby/irbrc" ".irbrc"
 
 # TMUX
 check_and_link_file "config/tmux.conf" ".tmux.conf"
-
-# VIM
-make vim
 
 # Binaries
 mkdir -p $HOME/bin

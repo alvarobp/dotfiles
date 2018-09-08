@@ -1,12 +1,9 @@
 FROM ubuntu:latest
 
 ENV DOTFILES_DIR /opt/dotfiles
-ENV GIT_REPO https://github.com/alvarobp/dotfiles.git
 
 RUN apt-get update && \
-    apt-get install -y git-core
-RUN git clone $GIT_REPO $DOTFILES_DIR
+    apt-get install -y build-essential git-core vim
 
-WORKDIR $DOTFILES_DIR
+RUN rm -fr $HOME/.bashrc
 
-RUN bash $DOTFILES_DIR/install.sh
