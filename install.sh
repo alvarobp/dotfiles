@@ -62,16 +62,7 @@ check_and_link_file "ruby/irbrc" ".irbrc"
 check_and_link_file "config/tmux.conf" ".tmux.conf"
 
 # VIM
-check_and_link_file "vim/vimrc" ".vimrc"
-check_and_link_directory "vim/vim" ".vim"
-mkdir -p $HOME/.vim/tmp
-if which vim && which git &> /dev/null; then
-  echo "Installing vim plugins..."
-  vim +NeoBundleInstall +qall
-  echo "vim plugins installed"
-else
-  echo "Vim plugins were not installed. git is not available."
-fi
+make vim
 
 # Binaries
 mkdir -p $HOME/bin
