@@ -32,16 +32,7 @@ check_and_link_file() {
 }
 
 # Shell - Common
-check_and_link_directory "shell" ".shell"
-
-# Shell - Bash
-check_and_link_file "shell/bash/bashrc" ".bashrc"
-check_and_link_directory "shell/bash/bash" ".bash"
-in_osx && check_and_link_file "shell/bash/bash_profile" ".bash_profile"
-
-# Shell - Zsh
-check_and_link_file "shell/zsh/zshrc" ".zshrc"
-check_and_link_directory "shell/zsh/zsh" ".zsh"
+make shell
 
 # EMACS
 check_and_link_file "emacs/emacs" ".emacs"
