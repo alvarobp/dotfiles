@@ -35,8 +35,7 @@ check_and_link_file() {
 make shell
 
 # EMACS
-check_and_link_file "emacs/emacs" ".emacs"
-check_and_link_directory "emacs/emacs.d" ".emacs.d"
+make emacs
 
 # EDITRC
 check_and_link_file "config/editrc" ".editrc"
