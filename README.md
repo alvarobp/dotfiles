@@ -62,3 +62,10 @@ The most importan part of this file is when we append values to `INSTALLERS` and
 The `banner_install_%` and `banner_clean_%` rules are a simple way to show when a module starts its installation and cleaning rules. Add them as the first prerequisite of your rules to use them.
 
 The idea is to keep each set of dotfiles modular, so if you need to add or remove something it shouldn't affect other files or the main installation process.
+
+## Tests (experimental)
+
+To run tests,
+
+- Enter into a shell on the test docker container with: `make test_shell` (you may need to close vim manually before getting a shell prompt ¯\_(ツ)_/¯)
+- Run tests with: `make test`

@@ -40,3 +40,6 @@ clean: $(CLEANERS)
 
 legacy_install:
 	bash install.sh
+
+test_shell:
+	cd test; ./test-shell.sh
