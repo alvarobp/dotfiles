@@ -12,4 +12,5 @@ endif
 
 test:
 	@make -s test_vim
+	@make -s test_emacs
 	@echo "FINISHED"
