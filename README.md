@@ -67,5 +67,5 @@ The idea is to keep each set of dotfiles modular, so if you need to add or remov
 
 To run tests,
 
-- Enter into a shell on the test docker container with: `make test_shell` (you may need to close vim manually before getting a shell prompt ¯\_(ツ)_/¯)
+- Enter into a shell prompt on the test docker container with: `make test_prompt` (you may need to close vim manually before getting to the shell prompt ¯\_(ツ)_/¯)
 - Run tests with: `make test`

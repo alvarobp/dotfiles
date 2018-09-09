@@ -41,5 +41,5 @@ clean: $(CLEANERS)
 legacy_install:
 	bash install.sh
 
-test_shell:
+test_prompt:
 	cd test; ./test-shell.sh
