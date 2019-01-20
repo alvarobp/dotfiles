@@ -1,0 +1,25 @@
+{
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "editor.minimap.enabled": false,
+    "files.trimTrailingWhitespace": true,
+    "editor.fontSize": 18,
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [
+      80,
+      120
+    ],
+    "workbench.startupEditor": "newUntitledFile",
+    "window.titleBarStyle": "custom",
+    "editor.renderControlCharacters": true,
+    "breadcrumbs.enabled": false,
+    "ruby.lint": {
+      "rubocop": true
+    },
+    "ruby.intellisense": "rubyLocate",
+    "ruby.codeCompletion": "rcodetools",
+    "workbench.activityBar.visible": true,
+    "workbench.editor.enablePreview": false,
+    "editor.multiCursorModifier": "ctrlCmd"
+}

@@ -11,7 +11,8 @@ endif
 .PHONY: test
 
 test:
+	@make -s test_shell
 	@make -s test_vim
 	@make -s test_emacs
-	@make -s test_shell
+	@make -s test_vscode
 	@echo "FINISHED"
