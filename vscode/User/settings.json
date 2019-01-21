@@ -21,5 +21,9 @@
     "ruby.codeCompletion": "rcodetools",
     "workbench.activityBar.visible": true,
     "workbench.editor.enablePreview": false,
-    "editor.multiCursorModifier": "ctrlCmd"
+    "editor.multiCursorModifier": "ctrlCmd",
+    "files.insertFinalNewline": true,
+    "window.zoomLevel": -1,
+    "files.autoSave": "off",
+    "search.location": "sidebar"
 }
