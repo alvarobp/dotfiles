@@ -34,10 +34,6 @@ check_and_link_file() {
 # EDITRC
 check_and_link_file "config/editrc" ".editrc"
 
-# Ruby
-check_and_link_file "ruby/gemrc" ".gemrc"
-check_and_link_file "ruby/irbrc" ".irbrc"
-
 # TMUX
 check_and_link_file "config/tmux.conf" ".tmux.conf"
 
