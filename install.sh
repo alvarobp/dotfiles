@@ -34,10 +34,6 @@ check_and_link_file() {
 # EDITRC
 check_and_link_file "config/editrc" ".editrc"
 
-# GIT
-check_and_link_file "git/gitconfig" ".gitconfig"
-check_and_link_file "git/githelpers" ".githelpers"
-
 # Ruby
 check_and_link_file "ruby/gemrc" ".gemrc"
 check_and_link_file "ruby/irbrc" ".irbrc"

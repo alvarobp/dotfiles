@@ -12,6 +12,7 @@ endif
 
 test:
 	@make -s test_shell
+	@make -s test_git
 	@make -s test_vim
 	@make -s test_emacs
 	@make -s test_vscode
