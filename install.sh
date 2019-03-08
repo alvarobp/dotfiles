@@ -31,12 +31,6 @@ check_and_link_file() {
   echo "Linked ~/$destination_path"
 }
 
-# EDITRC
-check_and_link_file "config/editrc" ".editrc"
-
-# TMUX
-check_and_link_file "config/tmux.conf" ".tmux.conf"
-
 # Binaries
 mkdir -p $HOME/bin
 binaryfiles=`ls $dotfiles_path/bin/`

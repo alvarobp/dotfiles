@@ -17,4 +17,5 @@ test:
 	@make -s test_emacs
 	@make -s test_vscode
 	@make -s test_ruby
+	@make -s test_config
 	@echo "FINISHED"
