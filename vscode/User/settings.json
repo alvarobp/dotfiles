@@ -25,5 +25,6 @@
     "files.insertFinalNewline": true,
     "window.zoomLevel": -1,
     "files.autoSave": "off",
-    "search.location": "sidebar"
+    "search.location": "sidebar",
+    "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
 }
