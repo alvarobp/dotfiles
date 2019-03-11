@@ -17,7 +17,8 @@ apt-get install -y zsh
 sudo -u $COMMON_USER bash -c "
 cd /home/$COMMON_USER
 git clone https://github.com/alvarobp/dotfiles.git .dotfiles
-bash .dotfiles/install.sh
+cd .dotfiles
+make
 "
 
 # Make zsh load profile.d scripts

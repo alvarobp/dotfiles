@@ -20,7 +20,7 @@ MKDIR := mkdir -p
 CLONE := git clone
 RM    := rm -f
 
-.PHONY: default install clean legacy_install
+.PHONY: default install clean
 
 default: install
 
@@ -34,12 +34,9 @@ banner_clean_%:
 
 include **/*.mk
 
-install: $(INSTALLERS) legacy_install
+install: $(INSTALLERS)
 
 clean: $(CLEANERS)
-
-legacy_install:
-	bash install.sh
 
 test_prompt:
 	cd test; ./test-shell.sh
