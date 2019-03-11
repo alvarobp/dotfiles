@@ -30,10 +30,3 @@ check_and_link_file() {
   ln -s $dotfiles_path/$source_path ~/$destination_path
   echo "Linked ~/$destination_path"
 }
-
-# Binaries
-mkdir -p $HOME/bin
-binaryfiles=`ls $dotfiles_path/bin/`
-for binfile in $binaryfiles; do
-  check_and_link_file "bin/$binfile" "bin/$binfile"
-done

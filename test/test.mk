@@ -18,4 +18,5 @@ test:
 	@make -s test_vscode
 	@make -s test_ruby
 	@make -s test_config
+	@make -s test_bin
 	@echo "FINISHED"
