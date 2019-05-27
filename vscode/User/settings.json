@@ -3,7 +3,7 @@
     "telemetry.enableTelemetry": false,
     "editor.minimap.enabled": false,
     "files.trimTrailingWhitespace": true,
-    "editor.fontSize": 18,
+    "editor.fontSize": 16,
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
     "editor.rulers": [
@@ -23,8 +23,14 @@
     "workbench.editor.enablePreview": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "files.insertFinalNewline": true,
-    "window.zoomLevel": -1,
+    "window.zoomLevel": 0,
     "files.autoSave": "off",
     "search.location": "sidebar",
     "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
+    "files.watcherExclude": {
+      "node_modules": true
+    },
+    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "editor.dragAndDrop": false,
+    "diffEditor.renderIndicators": false
 }
