@@ -32,5 +32,9 @@
     },
     "javascript.implicitProjectConfig.experimentalDecorators": true,
     "editor.dragAndDrop": false,
-    "diffEditor.renderIndicators": false
+    "diffEditor.renderIndicators": false,
+    "[python]": {
+      "editor.insertSpaces": true,
+      "editor.tabSize": 4
+    }
 }
