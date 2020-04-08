@@ -21,6 +21,8 @@ alias ggpush='git push origin $(git_current_branch)'
 alias gignore='git update-index --assume-unchanged'
 alias gunignore='git update-index --no-assume-unchanged'
 
+complete -F _complete_alias gco
+
 function git_current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
   ref=$(git rev-parse --short HEAD 2> /dev/null) || return
