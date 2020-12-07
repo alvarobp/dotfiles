@@ -9,9 +9,9 @@ VIM_DST_DIR := $(DST_DIR)/.vim
 VIM_TMP_DIR := $(VIM_DST_DIR)/tmp
 VIMRC := $(DST_DIR)/.vimrc
 
-.PHONY: vim clean_vim neo_bundle_install
+.PHONY: vim clean_vim vim_install_bundle
 
-vim: banner_install_vim $(VIMRC) $(VIM_DST_DIR) $(VIM_TMP_DIR) neo_bundle_install
+vim: banner_install_vim $(VIMRC) $(VIM_DST_DIR) $(VIM_TMP_DIR) vim_install_bundle
 
 $(VIMRC):
 	$(LINK) $(VIM_SRC_DIR)/vimrc $@
@@ -22,8 +22,8 @@ $(VIM_DST_DIR):
 $(VIM_TMP_DIR):
 	$(MKDIR) $@
 
-neo_bundle_install:
-	vim +NeoBundleInstall +qall
+vim_install_bundle:
+	vim +PlugInstall +PlugUpdate +qall
 
 clean_vim: banner_clean_vim
 	$(RM) $(VIM_DST_DIR)

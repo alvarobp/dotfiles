@@ -54,6 +54,7 @@ set t_Co=256
 set background=dark
 colorscheme vividchalk
 
+" Don't print bufferline bar
 let g:bufferline_echo = 0         " Don't print bufferline bar
 
 " Open new split panes to right and bottom, which feels more natural
@@ -64,34 +65,7 @@ set splitright
 runtime macros/matchit.vim        " Load the matchit plugin.
 runtime! plugins/rspec.vim
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
-call neobundle#rc(expand('~/.vim-bundle/'))
-
-" Let NeoBundle manage NeoBundle
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/vimproc', {
-      \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
-      \     'cygwin' : 'make -f make_cygwin.mak',
-      \     'mac' : 'make -f make_mac.mak',
-      \     'unix' : 'make -f make_unix.mak',
-      \    },
-      \ }
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'tpope/vim-endwise'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'godlygeek/tabular'
-NeoBundle 'vim-ruby/vim-ruby'
-NeoBundle 'thoughtbot/vim-rspec'
-NeoBundle 'bling/vim-bufferline'
-NeoBundle 'moll/vim-bbye'
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'pangloss/vim-javascript'
+source ~/.vim/plugin/plug-bundle.vim
 
 filetype plugin indent on         " Turn on file type detection.
 
@@ -140,10 +114,36 @@ nnoremap <c-l> <c-w>l
 " Repeat last command
 " :noremap <C-P> @:<CR>
 
-" Configure bufferline
-let g:bufferline_echo = 0
-autocmd VimEnter *
-  \ let &statusline='%{bufferline#refresh_status()}' . bufferline#get_status_string() . ' %=%l,%v' . '        %P'
+" Lightline
+
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'fugitive#head'
+      \ },
+      \ }
+
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+
+let g:lightline#bufferline#show_number = 1
+let g:lightline#bufferline#min_buffer_count = 2
+
+nmap <Leader>1 <Plug>lightline#bufferline#go(1)
+nmap <Leader>2 <Plug>lightline#bufferline#go(2)
+nmap <Leader>3 <Plug>lightline#bufferline#go(3)
+nmap <Leader>4 <Plug>lightline#bufferline#go(4)
+nmap <Leader>5 <Plug>lightline#bufferline#go(5)
+nmap <Leader>6 <Plug>lightline#bufferline#go(6)
+nmap <Leader>7 <Plug>lightline#bufferline#go(7)
+nmap <Leader>8 <Plug>lightline#bufferline#go(8)
+nmap <Leader>9 <Plug>lightline#bufferline#go(9)
+nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Strip trailing whitespace
 function! <SID>StripTrailingWhitespaces()
