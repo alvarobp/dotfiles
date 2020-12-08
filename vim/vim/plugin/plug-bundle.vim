@@ -10,9 +10,9 @@ Plug 'moll/vim-bbye' " Delete buffers and close files in Vim without closing you
 Plug 'mengelbrecht/lightline-bufferline' " Bufferline plugin
 
 """ Ruby
-Plug 'vim-ruby/vim-ruby'
-Plug 'thoughtbot/vim-rspec'
-Plug 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more
+" Plug 'vim-ruby/vim-ruby'
+" Plug 'thoughtbot/vim-rspec'
+" Plug 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more
 
 """ JavaScript
 Plug 'pangloss/vim-javascript'

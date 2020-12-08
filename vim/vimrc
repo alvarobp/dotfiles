@@ -63,7 +63,6 @@ set splitright
 
 "" Load plugins
 runtime macros/matchit.vim        " Load the matchit plugin.
-" runtime! plugins/rspec.vim
 
 source ~/.vim/plugin/plug-bundle.vim
 
