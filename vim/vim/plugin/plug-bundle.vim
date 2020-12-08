@@ -7,6 +7,7 @@ Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'tpope/vim-commentary', { 'tag': 'v1.3' } " comment stuff out
 Plug 'tpope/vim-surround' " quoting/parenthesizing made simple
 Plug 'moll/vim-bbye' " Delete buffers and close files in Vim without closing your windows
+Plug 'itchyny/lightline.vim' " Status bar
 Plug 'mengelbrecht/lightline-bufferline' " Bufferline plugin
 
 """ Ruby
