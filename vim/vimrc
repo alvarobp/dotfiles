@@ -171,6 +171,10 @@ augroup vimrc-auto-mkdir
   endfunction
 augroup END
 
+" Show special chars as characters
+set listchars=tab:▶\ ,trail:~,extends:>,precedes:<,nbsp:.,eol:¬
+set list
+
 " Configure CtrlP
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlPCurWD'
