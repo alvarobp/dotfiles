@@ -18,6 +18,7 @@ Plug 'mengelbrecht/lightline-bufferline' " Bufferline plugin
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jason0x43/vim-js-indent'
 
 """ TypeScript
 Plug 'leafgarland/typescript-vim'
