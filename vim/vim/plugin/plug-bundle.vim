@@ -2,6 +2,7 @@ call plug#begin('~/.vim-bundle')
 
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'wincent/ferret', { 'on': ['Ack', 'Acks'] }
+Plug 'preservim/nerdtree'
 Plug 'ctrlpvim/ctrlp.vim' " Full path fuzzy file, buffer, mru, tag, finder for Vim
 Plug 'godlygeek/tabular' " text filtering and alignment
 Plug 'tpope/vim-commentary', { 'tag': 'v1.3' } " comment stuff out
