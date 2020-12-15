@@ -119,10 +119,10 @@ let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
+      \   'cocstatus': 'coc#status'
       \ },
       \ }
 
@@ -132,6 +132,9 @@ let g:lightline.component_type   = {'buffers': 'tabsel'}
 
 let g:lightline#bufferline#show_number = 1
 let g:lightline#bufferline#min_buffer_count = 2
+
+" Use autocmd to force lightline update. See :help coc-status
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
