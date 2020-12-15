@@ -21,7 +21,7 @@ $(VSCODE_SETTINGS):
 	$(LINK) $(VSCODE_USER_SRC_DIR)/settings.json $@
 
 vscode_install_extensions:
-	@cat $(VSCODE_EXTENSIONS_LIST) | xargs -L 1 code --install-extension
+	@cat $(VSCODE_EXTENSIONS_LIST) | xargs -L 1 -i code --install-extension {} --force
 
 save_vscode_extensions:
 	@code --list-extensions > $(VSCODE_EXTENSIONS_LIST)
