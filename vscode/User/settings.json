@@ -23,7 +23,7 @@
     "workbench.editor.enablePreview": false,
     "editor.multiCursorModifier": "ctrlCmd",
     "files.insertFinalNewline": true,
-    "window.zoomLevel": 0,
+    "window.zoomLevel": 1,
     "files.autoSave": "off",
     "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
     "files.watcherExclude": {
