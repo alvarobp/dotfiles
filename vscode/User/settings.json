@@ -35,5 +35,20 @@
     "[python]": {
       "editor.insertSpaces": true,
       "editor.tabSize": 4
-    }
+    },
+    "terraform.indexing": {
+      "enabled": false,
+      "liveIndexing": false,
+      "delay": 500,
+      "exclude": [
+        ".terraform/**/*",
+        "**/.terraform/**/*"
+      ]
+    },
+    "terraform.languageServer": {
+      "external": true,
+      "args": [
+        "serve"
+      ]
+    },
 }
