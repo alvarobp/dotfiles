@@ -1,4 +1,4 @@
-call plug#begin('~/.vim-bundle')
+call plug#begin('~/.vim/bundle')
 
 """ Common
 Plug 'Shougo/vimproc', { 'do': 'make' }
