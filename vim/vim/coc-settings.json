@@ -1,0 +1,10 @@
+{
+  "diagnostic.level":"error",
+  "suggest.floatEnable":false,
+  "suggest.disableMenu":true,
+  "suggest.disableKind":true,
+  "suggest.maxCompleteItemCount": 8,
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.autoTrigger":"trigger",
+  "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact"]
+}
