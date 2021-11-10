@@ -21,8 +21,5 @@ Plug 'sheerun/vim-polyglot' " A collection of language packs for Vim.
 " Plug 'thoughtbot/vim-rspec'
 " Plug 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more
 
-""" JavaScript
-Plug 'maxmellon/vim-jsx-pretty'
-
 " Add plugins to &runtimepath
 call plug#end()
