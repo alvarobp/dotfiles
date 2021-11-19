@@ -12,7 +12,6 @@ Plug 'moll/vim-bbye' " Delete buffers and close files in Vim without closing you
 Plug 'itchyny/lightline.vim' " Status bar
 Plug 'mengelbrecht/lightline-bufferline' " Bufferline plugin
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'w0rp/ale'
 
 """ Languages
 Plug 'sheerun/vim-polyglot' " A collection of language packs for Vim.

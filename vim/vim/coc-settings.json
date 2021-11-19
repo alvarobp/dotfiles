@@ -5,5 +5,8 @@
   "suggest.disableKind":true,
   "suggest.maxCompleteItemCount": 8,
   "suggest.preferCompleteThanJumpPlaceholder": true,
-  "suggest.autoTrigger":"trigger"
+  "suggest.autoTrigger":"trigger",
+  "eslint.enable": true,
+  "eslint.autoFixOnSave": true,
+  "eslint.quiet": false
 }
