@@ -5,6 +5,5 @@
   "suggest.disableKind":true,
   "suggest.maxCompleteItemCount": 8,
   "suggest.preferCompleteThanJumpPlaceholder": true,
-  "suggest.autoTrigger":"trigger",
-  "coc.preferences.formatOnSaveFiletypes": ["typescript", "typescriptreact"]
+  "suggest.autoTrigger":"trigger"
 }

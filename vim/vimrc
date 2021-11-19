@@ -159,18 +159,18 @@ nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 " Strip trailing whitespace
-function! <SID>StripTrailingWhitespaces()
-  " Preparation: save last search, and cursor position.
-  let _s=@/
-  let l = line(".")
-  let c = col(".")
-  " Do the business:
-  %s/\s\+$//e
-  " Clean up: restore previous search history, and cursor position
-  let @/=_s
-  call cursor(l, c)
-endfunction
-autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
+" function! <SID>StripTrailingWhitespaces()
+"   " Preparation: save last search, and cursor position.
+"   let _s=@/
+"   let l = line(".")
+"   let c = col(".")
+"   " Do the business:
+"   %s/\s\+$//e
+"   " Clean up: restore previous search history, and cursor position
+"   let @/=_s
+"   call cursor(l, c)
+" endfunction
+" autocmd BufWritePre * :call <SID>StripTrailingWhitespaces()
 
 " Create non-existent dirs on file save
 augroup vimrc-auto-mkdir
@@ -205,15 +205,6 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver'
   \ ]
 
-" Coc - Support Prettier & ESLint
-if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
-  let g:coc_global_extensions += ['coc-prettier']
-endif
-
-if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
-  let g:coc_global_extensions += ['coc-eslint']
-endif
-
 " Coc - Mappings
 " Remap keys for applying codeAction to the current line.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -224,6 +215,13 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+" Ale
+let g:ale_fixers = {
+\  'javascript': ['eslint'],
+\  'typescript': ['eslint']
+\ }
+let g:ale_fix_on_save = 1
 
 " NERDTree
 let g:NERDTreeShowHidden = 1
