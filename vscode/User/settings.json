@@ -2,7 +2,6 @@
     "telemetry.enableCrashReporter": false,
     "telemetry.enableTelemetry": false,
     "editor.minimap.enabled": true,
-    "files.trimTrailingWhitespace": true,
     "editor.fontSize": 16,
     "editor.tabSize": 2,
     "editor.renderWhitespace": "boundary",
@@ -24,17 +23,17 @@
     "editor.multiCursorModifier": "ctrlCmd",
     "files.insertFinalNewline": true,
     "window.zoomLevel": 1,
-    "files.autoSave": "off",
     "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
     "files.watcherExclude": {
       "node_modules": true
     },
-    "javascript.implicitProjectConfig.experimentalDecorators": true,
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
     "editor.dragAndDrop": false,
     "diffEditor.renderIndicators": false,
     "[python]": {
       "editor.insertSpaces": true,
-      "editor.tabSize": 4
+      "editor.tabSize": 4,
+      "editor.formatOnType": true
     },
     "terraform.indexing": {
       "enabled": false,
@@ -52,20 +51,22 @@
       ]
     },
     "[typescriptreact]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "typescript.updateImportsOnFileMove.enabled": "always",
     "javascript.updateImportsOnFileMove.enabled": "always",
     "[json]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[typescript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
     "[javascript]": {
-      "editor.defaultFormatter": "esbenp.prettier-vscode"
+      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "prettier.requireConfig": true
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
 }
