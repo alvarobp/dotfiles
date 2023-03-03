@@ -54,5 +54,11 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
+    "files.associations": {
+      "*.erb": "erb"
+    },
+    "[erb]": {
+      "editor.defaultFormatter":"aliariff.vscode-erb-beautify"
+    },
     "terraform.languageServer.enable": true,
 }
