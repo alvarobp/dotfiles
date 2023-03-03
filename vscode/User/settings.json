@@ -60,5 +60,9 @@
     "[erb]": {
       "editor.defaultFormatter":"aliariff.vscode-erb-beautify"
     },
+    "sync.autoUpload": true,
+    "sync.autoDownload": true,
+    "sync.gist": "7cc2e4ef9fff60b8ac70551cb9d6afb5",
     "terraform.languageServer.enable": true,
+    "settingsSync.ignoredExtensions": [],
 }
