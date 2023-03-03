@@ -35,21 +35,6 @@
       "editor.tabSize": 4,
       "editor.formatOnType": true
     },
-    "terraform.indexing": {
-      "enabled": false,
-      "liveIndexing": false,
-      "delay": 500,
-      "exclude": [
-        ".terraform/**/*",
-        "**/.terraform/**/*"
-      ]
-    },
-    "terraform.languageServer": {
-      "external": true,
-      "args": [
-        "serve"
-      ]
-    },
     "[typescriptreact]": {
       "editor.defaultFormatter": "dbaeumer.vscode-eslint"
     },
@@ -69,4 +54,5 @@
     "editor.codeActionsOnSave": {
       "source.fixAll.eslint": true
     },
+    "terraform.languageServer.enable": true,
 }
