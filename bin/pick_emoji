@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+EMOJI_FILE="$HOME/.cache/emojis.txt"
+
+function blue() {
+  echo -e "\033[36m$1\033[0m"
+}
+
+function check_requirements() {
+  if ! hash xmllint 2> /dev/null; then echo -e "\n 🚨 xmllint requirement is missing (sudo apt install libxml2-utils)"; exit 1; fi
+  if ! hash rofi 2> /dev/null; then echo -e "\n 🚨 rofi requirement is missing ($(blue "https://github.com/davatorium/rofi/blob/next/INSTALL.md#install-distribution"))"; exit 1; fi
+  if ! hash xdotool 2> /dev/null; then echo -e "\n 🚨 xdotool requirement is missing ($(blue "https://github.com/jordansissel/xdotool#installation"))"; exit 1; fi
+}
+
+function notify() {
+  if [ "$(command -v notify-send)" ]; then
+    notify-send "$1" "$2"
+  fi
+}
+
+function display() {
+  emoji=$(cat "$EMOJI_FILE" | grep -v '#' | grep -v '^[[:space:]]*$')
+  line=$(echo "$emoji" | rofi -font "Monospace 30" -theme Monokai -dmenu -i -p emoji -kb-custom-1 Ctrl+c $@)
+  exit_code=$?
+  line=($line)
+
+  if [ $exit_code == 0 ]; then
+    sleep 0.1	# Delay pasting so the text-entry can come active
+    xdotool type --clearmodifiers "${line[0]}"
+    elif [ $exit_code == 10 ]; then
+    echo -n "${line[0]}" | xsel -i -b
+  fi
+}
+
+function download() {
+  echo 'Downloading all emoji for your pleasure'
+  echo "" > "$EMOJI_FILE"
+  curl -s "https://raw.githubusercontent.com/github/gemoji/master/db/emoji.json" | jq --raw-output '.[] | "\(.emoji) \(.description)"' > $EMOJI_FILE
+  echo "We're all set!"
+}
+
+
+# Download all emoji if they don't exist yet
+if [ ! -f "$EMOJI_FILE" ]; then
+  download
+fi
+
+check_requirements
+display
