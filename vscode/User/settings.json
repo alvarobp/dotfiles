@@ -1,6 +1,5 @@
 {
-    "telemetry.enableCrashReporter": false,
-    "telemetry.enableTelemetry": false,
+    "telemetry.telemetryLevel": "off",
     "editor.minimap.enabled": true,
     "editor.fontSize": 16,
     "editor.tabSize": 2,
