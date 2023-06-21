@@ -9,9 +9,9 @@ function blue() {
 }
 
 function check_requirements() {
-  if ! hash xmllint 2> /dev/null; then echo -e "\n 🚨 xmllint requirement is missing (sudo apt install libxml2-utils)"; exit 1; fi
-  if ! hash rofi 2> /dev/null; then echo -e "\n 🚨 rofi requirement is missing ($(blue "https://github.com/davatorium/rofi/blob/next/INSTALL.md#install-distribution"))"; exit 1; fi
-  if ! hash xdotool 2> /dev/null; then echo -e "\n 🚨 xdotool requirement is missing ($(blue "https://github.com/jordansissel/xdotool#installation"))"; exit 1; fi
+  if ! hash jq 2> /dev/null; then echo -e "\n 🚨 jq is missing ($(blue "https://stedolan.github.io/jq/"))"; exit 1; fi
+  if ! hash rofi 2> /dev/null; then echo -e "\n 🚨 rofi is missing ($(blue "https://github.com/davatorium/rofi/blob/next/INSTALL.md#install-distribution"))"; exit 1; fi
+  if ! hash xdotool 2> /dev/null; then echo -e "\n 🚨 xdotool is missing ($(blue "https://github.com/jordansissel/xdotool#installation"))"; exit 1; fi
 }
 
 function notify() {
