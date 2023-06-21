@@ -1,68 +1,68 @@
 {
-    "telemetry.telemetryLevel": "off",
-    "editor.minimap.enabled": true,
-    "editor.fontSize": 16,
-    "editor.tabSize": 2,
-    "editor.renderWhitespace": "boundary",
-    "editor.rulers": [
-      80,
-      120
-    ],
-    "workbench.startupEditor": "newUntitledFile",
-    "window.titleBarStyle": "custom",
-    "editor.renderControlCharacters": true,
-    "breadcrumbs.enabled": false,
-    "ruby.lint": {
-      "rubocop": true
-    },
-    "ruby.intellisense": "rubyLocate",
-    "ruby.codeCompletion": "rcodetools",
-    "workbench.activityBar.visible": true,
-    "workbench.editor.enablePreview": false,
-    "editor.multiCursorModifier": "ctrlCmd",
-    "files.insertFinalNewline": true,
-    "window.zoomLevel": 1,
-    "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
-    "files.watcherExclude": {
-      "node_modules": true
-    },
-    "js/ts.implicitProjectConfig.experimentalDecorators": true,
-    "editor.dragAndDrop": false,
-    "diffEditor.renderIndicators": false,
-    "[python]": {
-      "editor.insertSpaces": true,
-      "editor.tabSize": 4,
-      "editor.formatOnType": true
-    },
-    "[typescriptreact]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "javascript.updateImportsOnFileMove.enabled": "always",
-    "[json]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[typescript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "[javascript]": {
-      "editor.defaultFormatter": "dbaeumer.vscode-eslint"
-    },
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.formatOnSave": false,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
-    },
-    "files.associations": {
-      "*.erb": "erb"
-    },
-    "[erb]": {
-      "editor.defaultFormatter":"aliariff.vscode-erb-beautify"
-    },
-    "sync.autoUpload": true,
-    "sync.autoDownload": true,
-    "sync.gist": "7cc2e4ef9fff60b8ac70551cb9d6afb5",
-    "terraform.languageServer.enable": true,
-    "settingsSync.ignoredExtensions": [],
-    "typescript.preferences.importModuleSpecifier": "relative"
+  "telemetry.telemetryLevel": "off",
+  "editor.minimap.enabled": true,
+  "editor.fontSize": 16,
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "workbench.startupEditor": "newUntitledFile",
+  "window.titleBarStyle": "custom",
+  "editor.renderControlCharacters": true,
+  "breadcrumbs.enabled": false,
+  "ruby.lint": {
+    "rubocop": true
+  },
+  "ruby.intellisense": "rubyLocate",
+  "ruby.codeCompletion": "rcodetools",
+  "workbench.activityBar.visible": true,
+  "workbench.editor.enablePreview": false,
+  "editor.multiCursorModifier": "ctrlCmd",
+  "files.insertFinalNewline": true,
+  "window.zoomLevel": 1,
+  "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
+  "files.watcherExclude": {
+    "node_modules": true
+  },
+  "js/ts.implicitProjectConfig.experimentalDecorators": true,
+  "editor.dragAndDrop": false,
+  "diffEditor.renderIndicators": false,
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.formatOnType": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[json]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+  },
+  "editor.defaultFormatter": "dbaeumer.vscode-eslint",
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "files.associations": {
+    "*.erb": "erb"
+  },
+  "[erb]": {
+    "editor.defaultFormatter": "aliariff.vscode-erb-beautify"
+  },
+  "sync.autoUpload": true,
+  "sync.autoDownload": true,
+  "sync.gist": "7cc2e4ef9fff60b8ac70551cb9d6afb5",
+  "terraform.languageServer.enable": true,
+  "settingsSync.ignoredExtensions": [],
+  "typescript.preferences.importModuleSpecifier": "relative"
 }
