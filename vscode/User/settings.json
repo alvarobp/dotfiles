@@ -65,4 +65,5 @@
     "sync.gist": "7cc2e4ef9fff60b8ac70551cb9d6afb5",
     "terraform.languageServer.enable": true,
     "settingsSync.ignoredExtensions": [],
+    "typescript.preferences.importModuleSpecifier": "relative"
 }
