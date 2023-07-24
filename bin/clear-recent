@@ -1,0 +1,11 @@
+#!/bin/bash
+
+RECENTLY_USED_PATH="$HOME/.local/share/recently-used.xbel"
+
+if [[ ! -f $RECENTLY_USED_PATH ]]; then
+  echo "No recent files found. Exiting..."
+  exit 1
+fi
+
+
+rm $RECENTLY_USED_PATH
