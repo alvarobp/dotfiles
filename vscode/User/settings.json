@@ -53,6 +53,10 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true
+  },
   "files.associations": {
     "*.erb": "erb"
   },
