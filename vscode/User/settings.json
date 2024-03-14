@@ -17,7 +17,6 @@
   },
   "ruby.intellisense": "rubyLocate",
   "ruby.codeCompletion": "rcodetools",
-  "workbench.activityBar.visible": true,
   "workbench.editor.enablePreview": false,
   "editor.multiCursorModifier": "ctrlCmd",
   "files.insertFinalNewline": true,
@@ -51,12 +50,22 @@
   "editor.defaultFormatter": "dbaeumer.vscode-eslint",
   "editor.formatOnSave": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": "explicit"
   },
   "[terraform]": {
     "editor.defaultFormatter": "hashicorp.terraform",
     "editor.formatOnSave": true
   },
+  "[hcl]": {
+    "editor.defaultFormatter": "jkillian.custom-local-formatters",
+    "editor.formatOnSave": true
+  },
+  "customLocalFormatters.formatters": [
+    {
+      "command": "terraform fmt -",
+      "languages": ["hcl"]
+    }
+  ],
   "files.associations": {
     "*.erb": "erb"
   },
@@ -65,5 +74,8 @@
   },
   "terraform.languageServer.enable": true,
   "settingsSync.ignoredExtensions": [],
-  "typescript.preferences.importModuleSpecifier": "relative"
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform"
+  }
 }
