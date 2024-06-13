@@ -43,8 +43,14 @@
   puf = push --force-with-lease
   # up = !git stash && git pull --rebase && git push origin `git name-rev --name-only HEAD` && git stash pop
 
+[init]
+  defaultBranch = main
+
 [branch]
   autosetuprebase = always
 
 [branch "master"]
+  rebase = true
+
+[branch "main"]
   rebase = true
