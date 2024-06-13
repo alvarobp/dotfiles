@@ -14,6 +14,10 @@
 [user]
   name = Alvaro Bautista
   email = alvarobp@gmail.com
+  signingkey = 131920AE1AAC5F52
+
+[commit]
+  gpgsign = true
 
 [alias]
   review = !"git log master..origin/master"
