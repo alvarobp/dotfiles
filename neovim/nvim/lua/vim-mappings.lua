@@ -3,6 +3,9 @@ vim.keymap.set("n", "<leader>Q", ":qa!<CR>")
 vim.keymap.set("n", "<leader><leader>", "<c-^>")
 vim.keymap.set("i", ";;", "<Esc>")
 
+-- Search
+vim.keymap.set('n', '<leader>h', ':nohlsearch<CR>')
+
 -- Navigate vim panes better
 vim.keymap.set('n', '<c-k>', ':wincmd k<CR>')
 vim.keymap.set('n', '<c-j>', ':wincmd j<CR>')
