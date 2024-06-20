@@ -16,3 +16,7 @@ vim.g.background = "light"
 vim.opt.swapfile = false
 
 vim.g.mapleader = ","
+
+-- Show special chars as characters
+vim.opt.listchars = { tab = "▶ ", trail = "~", extends = ">", precedes = "<", nbsp = ".", eol = "↵" }
+vim.opt.list = true
