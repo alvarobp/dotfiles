@@ -1,11 +1,3 @@
-vim.cmd("set expandtab")
-vim.cmd("set tabstop=2")
-vim.cmd("set softtabstop=2")
-vim.cmd("set shiftwidth=2")
-vim.g.mapleader=" "
-
-vim.opt.number = true
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
@@ -19,12 +11,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+require("vim-options")
+
 require("lazy").setup("plugins")
 
--- Global mappings
-vim.keymap.set('n', '<leader>Q', ':qa!<CR>')
-
--- Neotree mappings
-vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>')
-vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
-
+require("vim-mappings")
