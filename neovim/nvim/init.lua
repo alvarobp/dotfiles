@@ -21,7 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
--- Neotree
+-- Global mappings
+vim.keymap.set('n', '<leader>Q', ':qa!<CR>')
+
+-- Neotree mappings
 vim.keymap.set('n', '<C-n>', ':Neotree filesystem reveal left<CR>')
 vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>')
 
